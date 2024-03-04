@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
-  def home
+  def index
+    @users = User.all
   end
 end
