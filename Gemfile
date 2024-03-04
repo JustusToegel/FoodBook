@@ -10,6 +10,8 @@ gem "sprockets-rails"
 
 gem "devise"
 
+gem 'faker'
+
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
