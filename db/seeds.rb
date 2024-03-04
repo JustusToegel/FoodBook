@@ -29,7 +29,7 @@ User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     bio: Faker::Job.title,
-    description: Faker::Food.ethnic_category,
+    description: "I love #{Faker::Food.ethnic_category} and have plenty of meals prepared for you to cook.",
     instagram: "instagram.com",
     you_tube: "youtube.com"
   )
