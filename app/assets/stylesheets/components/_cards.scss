@@ -1,0 +1,44 @@
+.cards {
+  position: relative;
+  background-color: #fafafa;
+  padding: 20px;
+  border-radius: 6px;
+  border-color: #df0404b5;
+  gap: 0.5rem;
+  height: max-content;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.image {
+  height: 100px;
+  width: 100px;
+  background-color: black;
+  border-radius: 50%;
+  margin-top: 35px;
+  margin-left: 35px;
+  margin-right: 20px;
+}
+
+.card-content {
+  padding: 20px;
+  margin: auto;
+}
+.card-user-description {
+ margin-top: 50px;
+}
+.card-user-info {
+  margin-left: 40px;
+  margin-top: 20px;
+  padding: 0%;
+}
+.tags {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+
+}
+.tags button {
+  background-color: #00D23B;
+  border-radius: 5px;
+}
