@@ -3,5 +3,22 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :meals
+
+  has_many :meals, dependent: :destroy
+  has_one_attached :photo
+
+  validates :email, presence: true
+  validates :email, uniqueness: true
+  validates :password, presence: true
+  validates :password, length: { minimum: 5 }
+  validates :name, presence: true
+  validates :bio, presence: true
+  validates :description, presence: true
+
+  include PgSearch::Model
+  pg_search_scope :search_by_name,
+    against: [:name],
+    using: {
+      tsearch: { prefix: true }
+    }
 end
