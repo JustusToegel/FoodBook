@@ -1,23 +1,17 @@
 class MealsController < ApplicationController
-  def index
-    @flats = Flat.all
-    if params[:query].present?
-      @flats = Flat.search_by_name_and_address(params[:query])
-    end
-  end
 
   # Create
   def new
-    @flat = Flat.new
+    @meal = Meal.new
   end
 
   def create
-    @flat = Flat.new(flat_params)
-    @flat.user_id = current_user.id
-    @flat.save
+    @meal = Meal.new(meal_params)
+    @meal.user_id = current_user.id
+    @meal.save
 
-    if @flat.save
-      redirect_to flat_path(@flat)
+    if @meal.save
+      redirect_to meal_path(@meal)
     else
       render :new
     end
@@ -25,32 +19,32 @@ class MealsController < ApplicationController
 
   # show Read One
   def show
-    @flat = Flat.find(params[:id])
+    @meal = Meal.find(params[:id])
   end
 
   # update
   def edit
-    @flat = Flat.find(params[:id])
+    @meal = Meal.find(params[:id])
   end
 
   def update
-    @flat = Flat.find(params[:id])
-    @flat.update(flat_params)
+    @meal = Meal.find(params[:id])
+    @meal.update(meal_params)
 
-    redirect_to flat_path(@flat)
+    redirect_to user_meal_path(@meal)
   end
 
   # delete
   def destroy
-    @flat = Flat.find(params[:id])
-    @flat.destroy
+    @meal = Meal.find(params[:id])
+    @meal.destroy
 
-    redirect_to flats_path, status: :see_other
+    redirect_to user_path(@meal.user), status: :see_other
   end
 
   private
 
-  def flat_params
-    params.require(:flat).permit(:name, :address, :price, :photo)
+  def meal_params
+    params.require(:meal).permit(:name, :description, :instructions)
   end
 end
