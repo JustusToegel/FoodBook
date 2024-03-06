@@ -5,7 +5,8 @@
   <h2>Welcome to</h2>
   <h1 class="title"><%= image_tag ("Logo_FoodBook.png"), class: "logo" %></h1>
 
-  <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get">
+<%# Damian Form %>
+<form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get">
   <div class="form-search form-group">
     <input class="form-control string required" type="text" name="search[query]" id="search_query" />
     <button name="button" type="submit" class="search-button">
@@ -13,6 +14,16 @@
     </button>
   </div>
 </form>
+
+<%# Justus Form %>
+<%= form_with url: root_path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-search",
+    placeholder: "Who do you want to be inspired by?"
+  %>
+  <%= submit_tag "Search", name: "", class: "search-button type1" %>
+<% end %>
 
 </div>
 <%# end of banner %>
@@ -24,11 +35,13 @@
 
       <div class="photo-wrapper">
         <div class="image">
+          <% if user.photo.attached? %>
+            <%= cl_image_tag user.photo.key %>
+          <% end %>
         </div>
 
-
         <div class="card-user-description">
-          <h2><%= link_to user.name , user_path(user)%></h2>
+          <h2><%= link_to user.name, user_path(user) %></h2>
           <p><%= user.bio %></p>
         </div>
       </div>

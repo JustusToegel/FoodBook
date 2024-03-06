@@ -2,6 +2,9 @@
 <p><%= @meal.description %></p>
 <p><%= @meal.instructions %></p>
 
+<% if @meal.photo.attached? %>
+  <%= cl_image_tag @meal.photo.key %>
+<% end %>
 
 
 <%# if logged in you should have the option to edit the recipe %>
