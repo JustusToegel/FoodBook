@@ -1,0 +1,17 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<%= simple_form_for(@meal) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :instructions %>
+  <%= f.text_field :instructions %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit %>
+<% end %>
+
+

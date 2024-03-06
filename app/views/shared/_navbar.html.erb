@@ -1,0 +1,24 @@
+<%# Foodbook %>
+<%= link_to "back Home", root_path %>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<% if user_signed_in? %>
+
+    <li>
+      <%= link_to "Edit Profile", edit_user_path(current_user), class: "nav-link" %>
+    </li>
+    <li>
+      <%= link_to "Create New Recipe", new_user_meal_path(current_user), class: "nav-link" %>
+    </li>
+
+
+<% else %>
+  <li>
+    <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+  </li>
+<% end %>

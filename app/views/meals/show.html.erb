@@ -1,0 +1,8 @@
+<p><%= @meal.name %></p>
+<p><%= @meal.description %></p>
+<p><%= @meal.instructions %></p>
+
+
+
+<%# if logged in you should have the option to edit the recipe %>
+<%= link_to "Edit Meal", edit_meal_path(@meal) %>
