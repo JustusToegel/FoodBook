@@ -6,3 +6,39 @@
 <% @user.meals.each do |meal| %>
   <%= link_to meal.name, meal_path(meal) %>
 <% end %>
+----
+<div class="show-wrapper">
+
+  <div class="view-profile">
+    <div class="img">
+
+
+    </div>
+    <div class="info-name">
+      <h1><%= @user.name %></h1>
+      <p style="color: green;">211k followers</p>
+      <p><%= @user.bio %></p>
+    </div>
+    <div class="btn-follow">
+        <button>Follow</button>
+    </div>
+
+
+  </div>
+
+  <div class="user-bio">
+    <h3>About me...</h3>
+    <p><%= @user.description %></p>
+  </div>
+
+  <div class="recipe">
+    <div img-recipe>
+
+    </div>
+    <div class="description-rcp">
+
+    </div>
+  </div>
+
+  
+</div>
