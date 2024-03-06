@@ -9,13 +9,13 @@
 #   end
 require 'faker'
 
+Meal.destroy_all
 User.destroy_all
 
-User.create(
+andy = User.create(
   email: "andy@gmail.com",
   password: "123456",
-  first_name: "Andy",
-  last_name: "Shi",
+  name: "Andy Shi",
   bio: "Hobby Cook and Coding Lover",
   description: "I am Andy and I love to cook. Usually i prefer Burgers but i have plenty f recipes prepared for you!",
   instagram: "instagram.com",
@@ -26,12 +26,22 @@ User.create(
   user = User.new(
     email: Faker::Internet.email,
     password: "123456",
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
+    name: Faker::Name.name,
     bio: Faker::Job.title,
     description: "I love #{Faker::Food.ethnic_category} and have plenty of meals prepared for you to cook.",
     instagram: "instagram.com",
     you_tube: "youtube.com"
   )
   user.save
+end
+
+10.times do
+  name = Faker::Food.dish
+  meal = Meal.new(
+    name: name.to_s,
+    description: "Lovely variation of #{name} that you have never seen before.",
+    instructions: "To prepare you have to do:#{Faker::Food.description} Let it cook for 45 minutes",
+    user_id: andy.id
+  )
+  meal.save
 end

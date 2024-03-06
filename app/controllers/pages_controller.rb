@@ -1,3 +1,4 @@
+# THIS IS THE USER CONTROLLER
 class PagesController < ApplicationController
   def home
     @users = User.all
