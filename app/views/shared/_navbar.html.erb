@@ -7,25 +7,30 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
-        </li>
+      <ul class="navbar-nav me-auto d-flex">
+        <% if user_signed_in? %>
+          <li class="nav-item align-self-center">
+            <%= link_to "Add Recipe", new_user_meal_path(current_user), class: "nav-link navbar-btn" %>
+          </li>
+
+          <li class="nav-item align-self-center">
+            <%= link_to meal_carts_path(current_user), class: "nav-link"  do %>
+              <i class="fa-solid fa-cart-shopping"></i>
+            <% end %>
+          </li>
+        <% end %>
         <li class="nav-item dropdown">
           <%= link_to "#", class: "nav-link dropdown-toggle", id: "navbarDropdown", 'data-bs-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "false" do %>
             <%= image_tag "Andy.png", class: "avatar dropdown-toggle", alt: "User Avatar" %>
           <% end %>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <% if user_signed_in? %>
-              <a class="dropdown-item" href="<%= edit_user_path(current_user) %>">Edit Profile</a>
-              <a class="dropdown-item" href="<%= new_user_meal_path(current_user) %>">Create New Recipe</a>
+              <%= link_to "Edit Profile", edit_user_path(current_user), class: "dropdown-item" %>
               <a class="dropdown-item" data-turbo-method="delete" href="<%= destroy_user_session_path %>">Log out</a>
             <% else %>
-              <a class="dropdown-item" href="<%= new_user_session_path %>">Login</a>
+              <%= link_to "Login", new_user_session_path, class: "dropdown-item" %>
             <% end %>
           </div>
         </li>
@@ -33,21 +38,3 @@
     </div>
   </div>
 </nav>
-<% if user_signed_in? %>
-
-    <li>
-      <%= link_to "Edit Profile", edit_user_path(current_user), class: "nav-link" %>
-    </li>
-    <li>
-      <%= link_to "Create New Recipe", new_user_meal_path(current_user), class: "nav-link" %>
-    </li>
-    <li>
-      <%= link_to "My Cart", meal_carts_path(current_user), class: "nav-link" %>
-    </li>
-
-<% else %>
-  <li>
-    <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-  </li>
-<% end %>
-
