@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   end
 
   resources :meals, only: %i[show destroy edit update] do
-    resources :carts
+    resources :carts, only: %i[create new edit update]
   end
+
+  resources :carts, only: %i[destroy index]
 end
