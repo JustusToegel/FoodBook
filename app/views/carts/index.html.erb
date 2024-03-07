@@ -1,0 +1,8 @@
+<% @cart.each do |cart_item| %>
+  <ul>
+  <li>
+  <%= cart_item.meal.name %>
+  <%# <%= link_to "Delete", cart_path(meal, @cart_item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "cancel" %> %>
+  </li>
+  </ul>
+<% end %>
