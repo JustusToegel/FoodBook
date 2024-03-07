@@ -47,8 +47,10 @@
               </div>
               <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto aliquid fugit quos eligendi magnam tempore sunt.</p>
             </div>
-            <div class="quick-add">
-              <button>Quick Add </button>
+            <div>
+              <%= simple_form_for([meal, @cart_item]) do |f| %>
+                <%= f.submit "Quick Add", class: "quick-add" %>
+              <% end %>
             </div>
           </div>
         </div>

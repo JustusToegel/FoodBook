@@ -4,10 +4,13 @@ class CartsController < ApplicationController
     @cart = current_user.carts
   end
 
-
   def create
-    @cart_item = Cart.new(user_id: current_user.id, meal_id: params[:meal_id].to_i, amount: cart_params[:amount].to_i)
-    # @cart_item.user = current_user
+    @cart_item = Cart.new
+    if (defined? cart_params[:amount])
+      @cart_item.amount = cart_params[:amount]
+    end
+    @cart_item.user = current_user
+    @cart_item.meal_id = params[:meal_id].to_i
     @cart_item.save
 
     if @cart_item.save

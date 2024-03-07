@@ -3,13 +3,14 @@
 <br>
 <br>
 <br>
-<div class="cart-form">
+<div class="cart-form"> 
+  <ul>
   <% @cart.each do |cart_item| %>
-    <ul>
     <li>
-    <%= cart_item.meal.name %>
-    <%# <%= link_to "Delete", cart_path(meal, @cart_item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "cancel" %> %>
+      <%= cart_item.meal.name %>
+      <%= cart_item.amount %>
+      <%= link_to "Delete", cart_path(cart_item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "cancel" %>
     </li>
-    </ul>
-  <% end %>
+   <% end %>
+  </ul>
 </div>

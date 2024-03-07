@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   # show Read One
   def show
     @user = User.find(params[:id])
+    @cart_item = Cart.new
   end
 
   # update
