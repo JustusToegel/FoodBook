@@ -9,9 +9,21 @@
 #   end
 require 'faker'
 
+Ingredient.destroy_all
 Meal.destroy_all
 User.destroy_all
 
+# Ingredients
+30.times do
+  ingredient = Ingredient.new(
+    name: Faker::Food.unique.ingredient,
+    size: 200,
+    price: 5
+  )
+  ingredient.save
+end
+
+# Andy User and his Meals
 andy = User.create(
   email: "andy@gmail.com",
   password: "123456",
@@ -24,16 +36,27 @@ andy = User.create(
 
 10.times do
   name = Faker::Food.dish
-  meal = Meal.new(
+  andy_meal = Meal.new(
     name: name.to_s,
     description: "Lovely variation of #{name} that you have never seen before.",
     instructions: "To prepare you have to do:#{Faker::Food.description} Let it cook for 45 minutes",
     prep_time: 45,
     user_id: andy.id
   )
-  meal.save
+  andy_meal.save
+
+  5.times do
+    andy_meal_ingredient = MealIngredient.new(
+      quantity: [1..5].sample,
+      meal_id: andy_meal.id,
+      ingredient_id: Ingredient.all.sample.id
+    )
+    andy_meal_ingredient.save
+  end
 end
 
+
+# Seeding User with Meals and Ingredients
 10.times do
   user = User.new(
     email: Faker::Internet.email,
@@ -44,7 +67,7 @@ end
     instagram: "instagram.com",
     you_tube: "youtube.com"
   )
-  user.save!
+  user.save
 
   5.times do
     name = Faker::Food.dish
@@ -55,8 +78,15 @@ end
       prep_time: 45,
       user_id: user.id
     )
-    meal.save!
+    meal.save
+
+    5.times do
+      meal_ingredient = MealIngredient.new(
+        quantity: [1..5].sample,
+        meal_id: meal.id,
+        ingredient_id: Ingredient.all.sample.id
+      )
+      meal_ingredient.save
+    end
   end
 end
-
-
