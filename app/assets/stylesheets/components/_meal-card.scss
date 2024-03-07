@@ -1,0 +1,47 @@
+.meal {
+  border: rgb(19, 184, 60) solid 1px;
+  display: flex;
+  padding: 30px;
+  margin: 20px 0px;
+  border-radius: 25px;
+  box-shadow: 0px 4px #00000031;
+}
+
+.meal-img img {
+  height: 200px;
+  width: 200px;
+  border-radius: 5px;
+  margin: auto;
+  object-fit: cover;
+}
+
+.meal-content {
+  margin-left: 50px;
+}
+
+.meal-tags button{
+  margin-top: 20px;
+  margin-right: 10px;
+  background-color: #00d23c30;
+  border-radius: 10px;
+  border: none;
+}
+
+.quick-add button {
+  width: 130px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  background-color: white;
+  border: solid 1px #00D23B;
+  color: #00B63F;
+}
+.quick-add button:hover {
+  background: #00B63F;
+  transform: scale(1.05);
+  transition: transform .3s ease-in-out;
+}
+
+.description {
+  margin-top: 20px;
+  padding-right: 20px;
+}
