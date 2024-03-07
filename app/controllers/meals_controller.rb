@@ -20,6 +20,7 @@ class MealsController < ApplicationController
   # show Read One
   def show
     @meal = Meal.find(params[:id])
+    @cart_item = Cart.new
   end
 
   # update

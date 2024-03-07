@@ -14,5 +14,7 @@ Rails.application.routes.draw do
     resources :meals, only: %i[new create]
   end
 
-  resources :meals, only: %i[show destroy edit update]
+  resources :meals, only: %i[show destroy edit update] do
+    resources :carts
+  end
 end
