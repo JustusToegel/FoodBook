@@ -9,14 +9,14 @@
   display: flex;
 }
 
-.form-control {
+.form-control-search {
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
   background-color: white;
   border: none;
 }
 
-.form-control::placeholder {
+.form-control-search::placeholder {
   color: #00D23B;
 }
 
