@@ -1,16 +1,11 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="cart-form"> 
+<div class="cart-form">
   <ul>
-  <% @cart.each do |cart_item| %>
-    <li>
-      <%= cart_item.meal.name %>
-      <%= cart_item.amount %>
-      <%= link_to "Delete", cart_path(cart_item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "cancel" %>
-    </li>
-   <% end %>
+    <% @cart.each do |cart_item| %>
+      <li>
+        <%= cart_item.meal.name %>
+        <%= cart_item.amount %>
+        <%= link_to "Delete", cart_path(cart_item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "cancel" %>
+      </li>
+    <% end %>
   </ul>
 </div>
