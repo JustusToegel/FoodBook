@@ -6,6 +6,17 @@
   <%= cl_image_tag @meal.photo.key %>
 <% end %>
 
+<ul>
+<% @meal.ingredients.each do |ingredient| %>
+  <li><%= ingredient.name %></li>
+<% end %>
+</ul>
 
 <%# if logged in you should have the option to edit the recipe %>
 <%= link_to "Edit Meal", edit_meal_path(@meal) %>
+
+
+<%= simple_form_for([@meal,@cart_item]) do |f| %>
+  <%= f.input :amount %>
+  <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+<% end %>
