@@ -26,6 +26,10 @@ class CartsController < ApplicationController
     redirect_to carts_path, status: :see_other
   end
 
+  def shoppinglist
+    @cart = current_user.carts
+  end
+
   private
 
   def cart_params

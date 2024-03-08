@@ -1,15 +1,49 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<%= simple_form_for(@meal) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :instructions %>
-  <%= f.text_field :instructions %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit %>
-<% end %>
+<div class="create-recipe-form">
+  <h1 class="title-form">Edit recipe</h1>
+  <%= simple_form_for(@meal) do |f| %>
+    <div class="form-content">
+      <div class="top-left">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="bottom-left">
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+      </div>
+      <div class="top-right">
+        <%= f.label :instructions %>
+        <%= f.text_field :instructions %>
+      </div>
+      <div class="bottom-right">
+        <%= f.input :photo, as: :file %>
+        <%= f.submit %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+<%# Form for Ingredient Search %>
+<div class="greenbox">
+  <div class="search-bar">
+    <%= form_with url: edit_meal_path, method: :get do %>
+      <div class="form-search form-group">
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control-search string required",
+          placeholder: "What do you need?"
+        %>
+        <%= button_tag(name: "", class: "search-button") do %>
+          <i class="fas fa-search"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <ul>
+  <% @ingredients.each do |ingredient| %>
+    <li><%= ingredient.name %></li>
+  <% end %>
+  </ul>
+</div>
+<%# end of Form with results %>

@@ -1,27 +1,24 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+  <%# <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :email, required: true, autofocus: true %>
-
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :bio %>
+    <%= f.text_field :bio %>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    <%= f.label :instagram %>
+    <%= f.text_field :instagram %>
+    <%= f.label :you_tube %>
+    <%= f.text_field :you_tube %>
+    <%= f.input :photo, as: :file %>
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
-
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-  </div>
 
   <div class="form-actions">
     <%= f.button :submit, "Update" %>
