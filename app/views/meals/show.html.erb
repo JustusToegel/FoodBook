@@ -1,22 +1,56 @@
-<p><%= @meal.name %></p>
-<p><%= @meal.description %></p>
-<p><%= @meal.instructions %></p>
+ <div class="show-meal">
+  <div class="meal-picture">
+    <% if @meal.photo.attached? %>
+      <%= cl_image_tag @meal.photo.key %>
+    <% end %>
+  </div>
 
-<% if @meal.photo.attached? %>
-  <%= cl_image_tag @meal.photo.key %>
-<% end %>
+  <div class="meal-info">
+    <p class="meal-name"><%= @meal.name %></p>
+    <p class="meal-description"><%= @meal.description %></p>
+    <%= link_to "Edit Meal", edit_meal_path(@meal), class: "edit-btn" %>
+  </div>
 
-<ul>
-<% @meal.ingredients.each do |ingredient| %>
-  <li><%= ingredient.name %></li>
-<% end %>
-</ul>
+  <div class="meal-body">
 
-<%# if logged in you should have the option to edit the recipe %>
-<%= link_to "Edit Meal", edit_meal_path(@meal) %>
+    <div class="ingredient-list">
+      <h2>Ingredients</h2>
+      <ul>
+        <% @meal.ingredients.each do |ingredient| %>
+          <li><%= ingredient.name %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="meal-actions">
+    <%= simple_form_for([@meal,@cart_item])  do |f| %>
+      <div class="d-flex">
+
+        <div class="meal-prep-time">
+          contenido
+        </div>
+          <%# if logged in you should have the option to edit the recipe %>
+
+        <div class="meal-servings">
+          <i class="fa-regular fa-user"></i>
+          <p>Servings</p>
+          <hr>
+          <div class="counter" data-controller="counter-buttons">
+            <button type="button" data-action="click->counter-buttons#plus">+</button>
+              <%= f.input :amount, as: :text , input_html: {rows: 1, cols: 1}, class: "number-input", label: false %>
+            <button type="button" data-action="click->counter-buttons#minus">-</button>
+          </div>
+        </div>
 
 
-<%= simple_form_for([@meal,@cart_item]) do |f| %>
-  <%= f.input :amount %>
-  <%= f.submit "Add to Cart", class: "btn btn-primary" %>
-<% end %>
+      </div>
+      <%= f.submit "Add to Cart", class: "btn btn-success w-100" %>
+     <% end %>
+     </div>
+  </div>
+
+  <div class="meal-instructions">
+    <p><%= @meal.instructions %></p>
+  </div>
+
+
+</div>
