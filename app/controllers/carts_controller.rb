@@ -14,7 +14,8 @@ class CartsController < ApplicationController
     @cart_item.save
 
     if @cart_item.save
-      redirect_to user_path(@cart_item.meal.user)
+      # redirect_to user_path(@cart_item.meal.user)
+      redirect_to meal_path(@cart_item.meal)
     else
       redirect_to new_user_session_path
     end
