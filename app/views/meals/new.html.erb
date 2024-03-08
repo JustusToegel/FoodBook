@@ -6,13 +6,13 @@
         <%= f.label :name %>
         <%= f.text_field :name %>
       </div>
-      <div class="top-right">
-        <%= f.label :instructions %>
-        <%= f.text_field :instructions %>
-      </div>
       <div class="bottom-left">
         <%= f.label :description %>
         <%= f.text_field :description %>
+      </div>
+      <div class="top-right">
+        <%= f.label :instructions %>
+        <%= f.text_field :instructions %>
       </div>
       <div class="bottom-right">
         <%= f.input :photo, as: :file %>
@@ -21,3 +21,29 @@
     </div>
   <% end %>
 </div>
+
+
+<%# Form for Ingredient Search %>
+<div class="greenbox">
+  <div class="search-bar">
+    <%= form_with url: new_user_meal_path, method: :get do %>
+      <div class="form-search form-group">
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control-search string required",
+          placeholder: "What do you need?"
+        %>
+        <%= button_tag(name: "", class: "search-button") do %>
+          <i class="fas fa-search"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <ul>
+  <% @ingredients.each do |ingredient| %>
+    <li><%= ingredient.name %></li>
+  <% end %>
+  </ul>
+</div>
+<%# end of Form with results %>

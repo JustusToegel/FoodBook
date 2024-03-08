@@ -18,5 +18,9 @@ Rails.application.routes.draw do
     resources :carts, only: %i[create new edit update]
   end
 
-  resources :carts, only: %i[destroy index]
+  resources :carts, only: %i[destroy index] do
+    collection do
+      get 'shoppinglist'
+    end
+  end
 end
