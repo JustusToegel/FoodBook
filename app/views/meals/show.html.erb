@@ -7,8 +7,12 @@
 
   <div class="meal-info">
     <p class="meal-name"><%= @meal.name %></p>
-    <p class="meal-description"><%= @meal.description %></p>
     <%= link_to "Edit Meal", edit_meal_path(@meal), class: "edit-btn" %>
+  </div>
+
+  <div class="meal-description">
+    <h2>Description</h2>
+    <div><%= raw(@meal.description) %></div>
   </div>
 
   <div class="meal-body">
@@ -26,7 +30,7 @@
       <div class="d-flex">
 
         <div class="meal-prep-time">
-          contenido
+          <p><%= @meal.prep_time %> minutes</p>
         </div>
           <%# if logged in you should have the option to edit the recipe %>
 
@@ -49,7 +53,8 @@
   </div>
 
   <div class="meal-instructions">
-    <p><%= @meal.instructions %></p>
+    <h2>Instructions</h2>
+    <div><%= raw(@meal.instructions) %></div>
   </div>
 
 
