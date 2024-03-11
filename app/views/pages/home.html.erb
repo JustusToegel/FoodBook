@@ -27,9 +27,9 @@
 <div class="cards">
 
   <% @users.each do |user| %>
-    <div class="card">
+    <div id="card">
       <div class="photo-wrapper">
-        <div class="image">
+        <div class="card-image">
           <% if user.photo.attached? %>
             <%= cl_image_tag user.photo.key %>
           <% end %>

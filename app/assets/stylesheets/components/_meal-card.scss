@@ -27,18 +27,21 @@
   border: none;
 }
 
-.quick-add button {
+.quick-add {
+  border-color: #00B63F;
   width: 130px;
   padding: 10px 20px;
   border-radius: 25px;
   background-color: white;
   border: solid 1px #00D23B;
   color: #00B63F;
+
 }
-.quick-add button:hover {
+.quick-add:hover {
   background: #00B63F;
   transform: scale(1.05);
   transition: transform .3s ease-in-out;
+  color: white;
 }
 
 .description {
