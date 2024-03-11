@@ -2,8 +2,8 @@
 <%# banner %>
 <div class="banner">
   <br><br><br><br><br><br>
-  <h2>Welcome to</h2>
-  <h1 class="title"><%= image_tag ("Logo_FoodBook.png"), class: "logo" %></h1>
+  <h2 class="title">Welcome to</h2>
+  <h1><%= image_tag ("Logo_FoodBook.png"), class: "logo" %></h1>
 
 <%# Search Bar %>
 <div class="search-bar">
@@ -36,7 +36,7 @@
         </div>
 
         <div class="card-user-description">
-          <h2><%= link_to user.name, user_path(user) %></h2>
+          <h2><%= link_to user.name, user_path(user), class: "text-decoration-none" %></h2>
           <p><%= user.description %></p>
         </div>
       </div>
