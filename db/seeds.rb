@@ -49,7 +49,7 @@ andy = User.create(
 #     user_id: andy.id
 #   )
 #   andy_meal.save
-
+#
 #   5.times do
 #     andy_meal_ingredient = MealIngredient.new(
 #       quantity: [1..5].sample,
@@ -57,7 +57,7 @@ andy = User.create(
 #       ingredient_id: Ingredient.all.sample.id
 #     )
 #     andy_meal_ingredient.save
-#   end
+#  end
 # end
 
 user_url = "https://randomuser.me/api/?results=14"

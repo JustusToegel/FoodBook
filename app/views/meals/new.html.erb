@@ -1,25 +1,30 @@
 <div class="create-recipe-form">
   <h1 class="title-form">Create a new recipe</h1>
-  <%= simple_form_for([current_user, @meal]) do |f| %>
+  <form>
     <div class="form-content">
       <div class="top-left">
-        <%= f.label :name %>
-        <%= f.text_field :name %>
+        <label>
+          <input type="text" placeholder="Recipe Name"/>
+        </label>
       </div>
       <div class="bottom-left">
-        <%= f.label :description %>
-        <%= f.text_field :description %>
+        <label>
+          <input type="text" placeholder="Description"/>
+        </label>
       </div>
       <div class="top-right">
-        <%= f.label :instructions %>
-        <%= f.text_field :instructions %>
+        <label>
+          <input type="text" placeholder="Instructions"/>
+        </label>
       </div>
       <div class="bottom-right">
-        <%= f.input :photo, as: :file %>
-        <%= f.submit %>
+        <label>
+          <input type="file"/>
+        </label>
+        <button type="submit">Submit</button>
       </div>
     </div>
-  <% end %>
+  </form>
 </div>
 
 
