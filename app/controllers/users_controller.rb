@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   # show Read One
   def show
     @user = User.find(params[:id])
+    @cart_item = Cart.new
   end
 
   # update
@@ -29,8 +30,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-
+    @user.update_without_password(user_params.except(:current_pasword))
     redirect_to user_path(@user)
   end
 

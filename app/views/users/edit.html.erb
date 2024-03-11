@@ -1,20 +1,4 @@
-
-<%# <%= simple_form_for(@user) do |f| %>
-  <%# <%= f.label :name %>
-  <%# <%= f.text_field :name %>
-  <%# <%= f.label :bio %>
-  <%# <%= f.text_field :bio %>
-  <%# <%= f.label :description %>
-  <%# <%= f.text_field :description %>
-  <%# <%= f.label :instagram %>
-  <%# <%= f.text_field :instagram %>
-  <%# <%= f.label :youtube %>
-  <%# <%= f.text_field :youtube %>
-  <%# <%= f.input :photo, as: :file %>
-  <%# <%= f.submit %>
-<%# <% end %>
-
-
+<%# Form from Andy and Jamal with styles %>
 
 <div class="container p-3 mb-4 w-50">
   <h1 class="mb-4">Edit your profile:</h1>
@@ -67,4 +51,6 @@
       </div>
 
   <% end %>
+  <%# delete account button from master %>
+  <%= link_to "Delete Profile", user_path(@user), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 </div>

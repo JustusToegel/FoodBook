@@ -4,14 +4,18 @@ class CartsController < ApplicationController
     @cart = current_user.carts
   end
 
-
   def create
-    @cart_item = Cart.new(user_id: current_user.id, meal_id: params[:meal_id].to_i, amount: cart_params[:amount].to_i)
-    # @cart_item.user = current_user
+    @cart_item = Cart.new
+    if (defined? cart_params[:amount])
+      @cart_item.amount = cart_params[:amount]
+    end
+    @cart_item.user = current_user
+    @cart_item.meal_id = params[:meal_id].to_i
     @cart_item.save
 
     if @cart_item.save
-      redirect_to user_path(@cart_item.meal.user)
+      # redirect_to user_path(@cart_item.meal.user)
+      redirect_to meal_path(@cart_item.meal)
     else
       redirect_to new_user_session_path
     end
@@ -21,6 +25,10 @@ class CartsController < ApplicationController
     @cart_item = Cart.find(params[:id])
     @cart_item.destroy
     redirect_to carts_path, status: :see_other
+  end
+
+  def shoppinglist
+    @cart = current_user.carts
   end
 
   private

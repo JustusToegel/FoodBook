@@ -13,6 +13,7 @@ gem "devise"
 gem 'faker'
 gem "pg_search"
 gem "cloudinary"
+gem 'nokogiri', '~> 1.16', '>= 1.16.2'
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"

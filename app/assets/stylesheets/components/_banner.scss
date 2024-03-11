@@ -2,14 +2,15 @@
   padding: 20px;
   text-align: center;
   color: rgb(0, 0, 0);
-  height: 65vh;
-  background-image:  image-url("angelica-echeverry-HhVTiioq9DY-unsplash.jpg");
+  background-image: linear-gradient(rgba(58, 55, 55, 0.196), rgba(55, 55, 51, 0.209)),image-url("photo-1543352634-a1c51d9f1fa7.avif");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .title {
   margin-top: 50px;
+  font-family:unse;
+  color: darkgreen;
 }
 .logo {
   height: 15vh;

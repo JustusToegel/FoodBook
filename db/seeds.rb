@@ -8,6 +8,11 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 require 'faker'
+require 'net/http'
+require 'json'
+require 'nokogiri'
+require 'open-uri'
+
 
 Ingredient.destroy_all
 Meal.destroy_all
@@ -34,59 +39,98 @@ andy = User.create(
   you_tube: "youtube.com"
 )
 
-10.times do
-  name = Faker::Food.dish
-  andy_meal = Meal.new(
-    name: name.to_s,
-    description: "Lovely variation of #{name} that you have never seen before.",
-    instructions: "To prepare you have to do:#{Faker::Food.description} Let it cook for 45 minutes",
-    prep_time: 45,
-    user_id: andy.id
-  )
-  andy_meal.save
+# 10.times do
+#   name = Faker::Food.dish
+#   andy_meal = Meal.new(
+#     name: name.to_s,
+#     description: "Lovely variation of #{name} that you have never seen before.",
+#     instructions: "To prepare you have to do:#{Faker::Food.description} Let it cook for 45 minutes",
+#     prep_time: 45,
+#     user_id: andy.id
+#   )
+#   andy_meal.save
 
-  5.times do
-    andy_meal_ingredient = MealIngredient.new(
-      quantity: [1..5].sample,
-      meal_id: andy_meal.id,
-      ingredient_id: Ingredient.all.sample.id
-    )
-    andy_meal_ingredient.save
-  end
-end
+#   5.times do
+#     andy_meal_ingredient = MealIngredient.new(
+#       quantity: [1..5].sample,
+#       meal_id: andy_meal.id,
+#       ingredient_id: Ingredient.all.sample.id
+#     )
+#     andy_meal_ingredient.save
+#   end
+# end
 
+user_url = "https://randomuser.me/api/?results=14"
+user_response = Net::HTTP.get(URI(user_url))
+user_data = JSON.parse(user_response)["results"]
 
-# Seeding User with Meals and Ingredients
-10.times do
-  user = User.new(
-    email: Faker::Internet.email,
+user_data.each do |user|
+  new_user = User.create(
+    email: user["email"],
     password: "123456",
-    name: Faker::Name.name,
+    name: "#{user["name"]["first"]} #{user["name"]["last"]}",
     description: Faker::Job.title,
     bio: "I love #{Faker::Food.ethnic_category} and have plenty of meals prepared for you to cook.",
     instagram: "instagram.com",
     you_tube: "youtube.com"
   )
-  user.save
+  file = URI.open(user["picture"]["large"])
+  new_user.photo.attach(io: file, filename: "profile-picture.jpg", content_type: "image/jpg")
+end
 
-  5.times do
-    name = Faker::Food.dish
-    meal = Meal.new(
-      name: name.to_s,
-      description: "Lovely variation of #{name} that you have never seen before.",
-      instructions: "To prepare you have to do:#{Faker::Food.description} Let it cook for 45 minutes",
-      prep_time: 45,
-      user_id: user.id
-    )
-    meal.save
+# Seeding User with Meals and Ingredients
+# 10.times do
+#   user = User.new(
+#     email: Faker::Internet.email,
+#     password: "123456",
+#     name: Faker::Name.name,
+#     description: Faker::Job.title,
+#     bio: "I love #{Faker::Food.ethnic_category} and have plenty of meals prepared for you to cook.",
+#     instagram: "instagram.com",
+#     you_tube: "youtube.com"
+#   )
+#   user.save
 
-    5.times do
-      meal_ingredient = MealIngredient.new(
-        quantity: [1..5].sample,
-        meal_id: meal.id,
-        ingredient_id: Ingredient.all.sample.id
-      )
-      meal_ingredient.save
-    end
-  end
+#   5.times do
+#     name = Faker::Food.dish
+#     meal = Meal.new(
+#       name: name.to_s,
+#       description: "Lovely variation of #{name} that you have never seen before.",
+#       instructions: "To prepare you have to do:#{Faker::Food.description} Let it cook for 45 minutes",
+#       prep_time: 45,
+#       user_id: user.id
+#     )
+#     meal.save
+
+#     5.times do
+#       meal_ingredient = MealIngredient.new(
+#         quantity: [1..5].sample,
+#         meal_id: meal.id,
+#         ingredient_id: Ingredient.all.sample.id
+#       )
+#       meal_ingredient.save
+#     end
+#   end
+# end
+
+########################################################################
+# API
+
+api_key = "db6a8b3c79944976acd8ca04cd447035"
+uri = URI("https://api.spoonacular.com/recipes/random?number=10&apiKey=#{api_key}")
+response = Net::HTTP.get(uri)
+data = JSON.parse(response)
+
+recipes = data["recipes"]
+
+recipes.each do |recipe|
+  meal = Meal.create(
+    name: recipe["title"],
+    description: recipe["summary"],
+    instructions: recipe["instructions"],
+    prep_time: recipe["readyInMinutes"],
+    user_id: andy.id
+  )
+  file = URI.open(recipe["image"])
+  meal.photo.attach(io: file, filename: "recipe-picture.jpg", content_type: "image/jpg")
 end

@@ -1,0 +1,21 @@
+<div class="cart-form">
+  <ul>
+    <% @cart.each do |cart_item| %>
+      <% cart_item.meal.ingredients.each do |ingredient| %>
+        <li>
+          <%= ingredient.name %>
+          <%# how many times %>
+          <% ingredient.meal_ingredients.each do |item| %>
+            <% if item.meal == cart_item.meal %>
+              <% number = item.quantity.to_i * cart_item.amount %>
+              <p> For <%= cart_item.amount %> servings you need <%= number %> times the package size of <%= ingredient.size %></p>
+              <%# price %>
+              <% price = ingredient.price * number  %>
+              <p> costing: <%= price %>€</p>
+            <% end %>
+          <% end %>
+        </li>
+       <% end %>
+    <% end %>
+  </ul>
+</div>

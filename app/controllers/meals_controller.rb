@@ -3,6 +3,10 @@ class MealsController < ApplicationController
   # Create
   def new
     @meal = Meal.new
+    @ingredients = Ingredient.all
+    if params[:query].present?
+      @ingredients = @ingredients.where("name ILIKE ?", "%#{params[:query]}%")
+    end
   end
 
   def create
@@ -26,13 +30,18 @@ class MealsController < ApplicationController
   # update
   def edit
     @meal = Meal.find(params[:id])
+
+    @ingredients = Ingredient.all
+    if params[:query].present?
+      @ingredients = @ingredients.where("name ILIKE ?", "%#{params[:query]}%")
+    end
   end
 
   def update
     @meal = Meal.find(params[:id])
     @meal.update(meal_params)
 
-    redirect_to user_meal_path(@meal)
+    redirect_to meal_path(@meal)
   end
 
   # delete
