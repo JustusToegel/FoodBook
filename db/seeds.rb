@@ -19,14 +19,14 @@ Meal.destroy_all
 User.destroy_all
 
 # Ingredients
-30.times do
-  ingredient = Ingredient.new(
-    name: Faker::Food.unique.ingredient,
-    size: 200,
-    price: 5
-  )
-  ingredient.save
-end
+# 30.times do
+#   ingredient = Ingredient.new(
+#     name: Faker::Food.unique.ingredient,
+#     size: 200,
+#     price: 5
+#   )
+#   ingredient.save
+# end
 
 # Andy User and his Meals
 andy = User.create(
@@ -129,8 +129,26 @@ recipes.each do |recipe|
     description: recipe["summary"],
     instructions: recipe["instructions"],
     prep_time: recipe["readyInMinutes"],
+    price_serving: recipe["pricePerServing"],
     user_id: andy.id
   )
   file = URI.open(recipe["image"])
   meal.photo.attach(io: file, filename: "recipe-picture.jpg", content_type: "image/jpg")
+
+  # add indredients
+  recipe["extendedIngredients"].each do |ingredient|
+
+    new_ingredient = Ingredient.create(
+      name: search for name of grocerie from map API,
+      instruction_name: ingredient["original"],
+      size: 1,
+      price: 5
+    )
+
+    MealIngredient.new(
+      quantity: recipe["servings"],
+      meal_id: meal.id,
+      ingredient_id: new_ingredient.id
+    )
+  end
 end
