@@ -45,7 +45,7 @@
               <div class="meal-tags">
                 <button>HIGH PROTEIN</button><button>VEGAN</button><button>LOW CARB</button>
               </div>
-              <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto aliquid fugit quos eligendi magnam tempore sunt.</p>
+              <p class="description"><%= raw(meal.description).slice(0, 300) %>...</p>
             </div>
             <div>
               <%= simple_form_for([meal, @cart_item]) do |f| %>
