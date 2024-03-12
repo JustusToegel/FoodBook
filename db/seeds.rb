@@ -65,7 +65,7 @@ end
 ########## end of Andy ######################################
 
 ############ Create all other Users with Recipes ##############
-user_url = "https://randomuser.me/api/?results=4"
+user_url = "https://randomuser.me/api/?results=2"
 user_response = Net::HTTP.get(URI(user_url))
 user_data = JSON.parse(user_response)["results"]
 
@@ -85,8 +85,8 @@ user_data.each do |user|
   2.times do
     diet = ["ketogenic", "vegetarian", "vegan", "pescetarian", "italian"].sample
     # api_key = "db6a8b3c79944976acd8ca04cd447035" #Justus
-    # api_key = "bdad344848004f829dbd01d4f293d060" #Mago
-    api_key = "2d3dac26308744f7b8d10bcc305fb34d" #Mago 2
+    api_key = "bdad344848004f829dbd01d4f293d060" #Mago
+    # api_key = "2d3dac26308744f7b8d10bcc305fb34d" #Mago 2
     uri = URI("https://api.spoonacular.com/recipes/random?number=1&include-tags=#{diet}&apiKey=#{api_key}")
     response = Net::HTTP.get(uri)
     data = JSON.parse(response)
@@ -129,7 +129,7 @@ user_data.each do |user|
 
         ing_response = ing_http.request(ing_request)
 
-        if JSON.parse(ing_response.body)[0]["products"].size > 0
+        if ing_response.code == "200"
           title = JSON.parse(ing_response.body)[0]["products"][0]["title"]
         else
           title = "Kerygold Cooking Magic 250ml"
