@@ -14,7 +14,6 @@
       <div class="meal-info">
         <h1 class="meal-name"><%= @meal.name %></h1>
         <% if @meal.user_id == current_user.id %>
-        <% raise %>
           <%= link_to "Edit Meal", edit_meal_path(@meal), class: "edit-btn" %>
         <% end %>
         <hr>

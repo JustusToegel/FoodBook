@@ -7,12 +7,13 @@
   <%= simple_form_for([current_user, @meal]) do |f| %>
 
     <div class="row my-3">
-
       <div class="col">
         <%= f.label :name, { class: "edit-form-label"} %><br>
         <%= f.text_field :name,  { class: "edit-form-input", placeholder: "Name of Recipe" } %>
       </div>
+    </div>
 
+    <div class="row my-3">
       <div class="col">
         <%= f.label :description, { class: "edit-form-label"} %><br>
         <%= f.text_field :description, { class: "edit-form-input", placeholder: "Description" } %>
