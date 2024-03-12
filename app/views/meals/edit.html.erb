@@ -1,23 +1,52 @@
-<div class="create-recipe-form">
-  <h1 class="title-form">Edit recipe</h1>
+<br>
+<br>
+<br>
+<br>
+<div class="container p-3 mb-5 w-50">
+  <h1 class="mb-4">Edit recipe:</h1>
   <%= simple_form_for(@meal) do |f| %>
-    <div class="form-content">
-      <div class="top-left">
-        <%= f.label :name %>
-        <%= f.text_field :name %>
+
+    <div class="row">
+
+      <div class="col">
+        <%= f.label :name, { class: "edit-form-label"} %><br>
+        <%= f.text_field :name,  { class: "edit-form-input", placeholder: "Name of Recipe" } %>
       </div>
-      <div class="bottom-left">
-        <%= f.label :description %>
-        <%= f.text_field :description %>
+
+      <div class="col">
+        <%= f.label :prep_time, { class: "edit-form-label"} %><br>
+        <%= f.text_field :prep_time,  { class: "edit-form-input", placeholder: "Prep Time" } %>
       </div>
-      <div class="top-right">
-        <%= f.label :instructions %>
-        <%= f.text_field :instructions %>
+
+    </div>
+
+    <div class="row my-3">
+      <div class="col">
+        <%= f.label :description, { class: "edit-form-label"} %><br>
+        <%= f.text_field :description, { class: "edit-form-input", placeholder: "Description" } %>
       </div>
-      <div class="bottom-right">
-        <%= f.input :photo, as: :file %>
-        <%= f.submit %>
+    </div>
+
+    <div class="row my-3">
+      <div class="col">
+        <%= f.label :instructions, { class: "edit-form-label"} %><br>
+        <%= f.text_field :instructions, { class: "edit-form-input", placeholder: "Instructions" } %>
       </div>
+    </div>
+
+    <div class="row my-3">
+      <div class="col">
+        <%= f.label :category, { class: "edit-form-label"} %><br>
+        <%= f.text_field :category, { class: "edit-form-input", placeholder: "Category" } %>
+      </div>
+    </div>
+
+    <div class="row">
+      <%= f.input :photo, as: :file %>
+    </div>
+
+    <div class="bottom-right">
+        <%= f.submit "Create", class: "btn btn-success"%>
     </div>
   <% end %>
 </div>
