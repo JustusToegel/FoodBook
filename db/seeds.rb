@@ -170,7 +170,8 @@ user_data.each do |user|
         instructions: recipe["instructions"],
         prep_time: recipe["readyInMinutes"],
         category: diet,
-        user_id: new_user.id
+        user_id: new_user.id,
+        servings: recipe["servings"]
       )
       file = URI.open(recipe["image"])
       meal.photo.attach(io: file, filename: "recipe-picture.jpg", content_type: "image/jpg")
@@ -193,7 +194,7 @@ user_data.each do |user|
         # Add any required parameters to the request body
         ing_request.body = {
           "ingredients": [ingredient["name"]],
-          "servings": ingredient["servings"]
+          "servings": recipe["servings"]
         }.to_json
 
         ing_response = ing_http.request(ing_request)
