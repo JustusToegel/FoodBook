@@ -1,0 +1,128 @@
+{
+  "ingredients": [
+    {
+      "name": "1 lb Boneless, Skinless Chicken Thighs",
+      "price": 3.99
+    },
+    {
+      "name": "16 oz De Cecco Penne Pasta",
+      "price": 1.79
+    },
+    {
+      "name": "1 lb Brown Basmati Rice",
+      "price": 2.99
+    },
+    {
+      "name": "1 dozen Medium Eggs",
+      "price": 1.99
+    },
+    {
+      "name": "14.5 oz Muir Glen Organic Crushed Tomatoes",
+      "price": 2.49
+    },
+    {
+      "name": "1 lb Red Onions",
+      "price": 1.29
+    },
+    {
+      "name": "1 pack Fresh Cilantro",
+      "price": 0.99
+    },
+    {
+      "name": "1 Yellow Squash",
+      "price": 0.79
+    },
+    {
+      "name": "10 oz Baby Spinach Leaves",
+      "price": 2.49
+    },
+    {
+      "name": "8 oz Crumbled Feta Cheese",
+      "price": 3.49
+    },
+    {
+      "name": "16.9 oz Bertolli Extra Light Olive Oil",
+      "price": 6.49
+    },
+    {
+      "name": "15 oz Bush's Best Canned Kidney Beans",
+      "price": 1.39
+    },
+    {
+      "name": "1 lb Ground Turkey",
+      "price": 4.49
+    },
+    {
+      "name": "5 lb Sweet Potatoes",
+      "price": 4.99
+    },
+    {
+      "name": "1 pack Fresh Asparagus",
+      "price": 3.99
+    },
+    {
+      "name": "Fresh Zucchini",
+      "price": 1.49
+    },
+    {
+      "name": "16 oz Lee Kum Kee Premium Light Soy Sauce",
+      "price": 3.99
+    },
+    {
+      "name": "3 count Hass Avocados",
+      "price": 3.99
+    },
+    {
+      "name": "14.5 oz Del Monte Canned Whole Kernel Corn",
+      "price": 1.19
+    },
+    {
+      "name": "5 lb King Arthur Flour Unbleached All-Purpose Flour",
+      "price": 4.49
+    },
+    {
+      "name": "15 oz Goya Canned Chickpeas",
+      "price": 1.29
+    },
+    {
+      "name": "1 pack Falafel Mix",
+      "price": 2.99
+    },
+    {
+      "name": "8 count Pita Bread",
+      "price": 2.99
+    },
+    {
+      "name": "6 oz Plain Greek Yogurt",
+      "price": 1.99
+    },
+    {
+      "name": "fresh Lemon (piece)",
+      "price": 0.50
+    },
+    {
+      "name": "1 pack Fresh Parsley",
+      "price": 0.99
+    },
+    {
+      "name": "1 fresh Tomato",
+      "price": 0.75
+    },
+    {
+      "name": "Cucumber",
+      "price": 0.99
+    },
+    {
+      "name": "1 pack Tahini Sauce",
+      "price": 3.49
+    },
+    {
+      "name": "1 each Garlic Bulb",
+      "price": 0.75
+    },
+    {
+      "name": "1 pack Ground Cumin",
+      "price": 1.29
+    }
+  ]
+}

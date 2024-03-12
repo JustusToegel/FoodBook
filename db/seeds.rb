@@ -1,12 +1,3 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
 require 'faker'
 require 'net/http'
 require 'json'
@@ -17,38 +8,22 @@ Ingredient.destroy_all
 Meal.destroy_all
 User.destroy_all
 
-# Ingredients
-# 30.times do
-#   ingredient = Ingredient.new(
-#     name: Faker::Food.unique.ingredient,
-#     size: 200,
-#     price: 5
-#   )
-#   ingredient.save
-# end
+########## basic ingredients ####################
+ingjason_data = File.read("db/ingredients.json")
+cgptingredients = JSON.parse(ingjason_data)
+ingitems = cgptingredients["ingredients"]
 
-# Andy User and his Meals
+ingitems.each do |ingredient|
+  Ingredient.create(
+    name: ingredient["name"],
+    instruction_name: ingredient["name"],
+    size: 1,
+    price: ingredient["price"]
+  )
+end
+########### End of basic ingredients ################
 
-# 10.times do
-#   name = Faker::Food.dish
-#   andy_meal = Meal.new(
-  #     name: name.to_s,
-  #     description: "Lovely variation of #{name} that you have never seen before.",
-  #     instructions: "To prepare you have to do:#{Faker::Food.description} Let it cook for 45 minutes",
-  #     prep_time: 45,
-  #     user_id: andy.id
-  #   )
-  #   andy_meal.save
-  #
-  #   5.times do
-  #     andy_meal_ingredient = MealIngredient.new(
-    #       quantity: [1..5].sample,
-    #       meal_id: andy_meal.id,
-    #       ingredient_id: Ingredient.all.sample.id
-    #     )
-    #     andy_meal_ingredient.save
-    #  end
-    # end
+########### Andy User with Recipes ################################
 andy = User.create(
   email: "andy@gmail.com",
   password: "123456",
@@ -59,118 +34,38 @@ andy = User.create(
   you_tube: "youtube.com"
   )
 
-  jason_data = File.read("db/andyrecipes.json")
-  andyrecipes = JSON.parse(jason_data)
-  andyrec = andyrecipes["recipes"]
+jason_data = File.read("db/andyrecipes.json")
+andyrecipes = JSON.parse(jason_data)
+andyrec = andyrecipes["recipes"]
 
-
-  andyrec.each do |recipe|
-    meal = Meal.create(
-      name: recipe["name"],
-      description: recipe["description"],
-      instructions: recipe["instructions"],
-      prep_time: [30, 45],
-      category: "vegan",
-      user_id: andy.id,
-      servings: 2
+andyrec.each do |recipe|
+  meal = Meal.create(
+    name: recipe["name"],
+    description: recipe["description"],
+    instructions: recipe["instructions"],
+    prep_time: [30, 45],
+    category: "vegan",
+    user_id: andy.id,
+    servings: 2
+  )
+  recipe["ingredients"].each do |ingredient|
+    new_ingredient = Ingredient.create(
+      name: ingredient["name"],
+      instruction_name: ingredient["name"],
+      size: 1,
+      price: ingredient["price"]
     )
-    recipe["ingredients"].each do |ingredient|
-
-      new_ingredient = Ingredient.create(
-        name: ingredient["name"],
-        instruction_name: ingredient["name"],
-        size: 1,
-        price: ingredient["price"]
-      )
-
-      MealIngredient.create(
-        quantity: 1,
-        meal_id: meal.id,
-        ingredient_id: new_ingredient.id
-      )
-    end
+    MealIngredient.create(
+      quantity: 1,
+      meal_id: meal.id,
+      ingredient_id: new_ingredient.id
+    )
   end
+end
+########## end of Andy ######################################
 
-# Seeding User with Meals and Ingredients
-# 10.times do
-#   user = User.new(
-#     email: Faker::Internet.email,
-#     password: "123456",
-#     name: Faker::Name.name,
-#     description: Faker::Job.title,
-#     bio: "I love #{Faker::Food.ethnic_category} and have plenty of meals prepared for you to cook.",
-#     instagram: "instagram.com",
-#     you_tube: "youtube.com"
-#   )
-#   user.save
-
-#   5.times do
-#     name = Faker::Food.dish
-#     meal = Meal.new(
-#       name: name.to_s,
-#       description: "Lovely variation of #{name} that you have never seen before.",
-#       instructions: "To prepare you have to do:#{Faker::Food.description} Let it cook for 45 minutes",
-#       prep_time: 45,
-#       user_id: user.id
-#     )
-#     meal.save
-
-#     5.times do
-#       meal_ingredient = MealIngredient.new(
-#         quantity: [1..5].sample,
-#         meal_id: meal.id,
-#         ingredient_id: Ingredient.all.sample.id
-#       )
-#       meal_ingredient.save
-#     end
-#   end
-# end
-
-########################################################################
-# API
-
-# api_key = "db6a8b3c79944976acd8ca04cd447035"
-# uri = URI("https://api.spoonacular.com/recipes/random?number=3&apiKey=#{api_key}")
-# # for veggie: URI("https://api.spoonacular.com/recipes/random?number=6&include-tags=vegetarian&apiKey=#{api_key}")
-# response = Net::HTTP.get(uri)
-# data = JSON.parse(response)
-
-# recipes = data["recipes"]
-
-# recipes.each do |recipe|
-#   meal = Meal.create(
-#     name: recipe["title"],
-#     description: recipe["summary"],
-#     instructions: recipe["instructions"],
-#     prep_time: recipe["readyInMinutes"],
-#     price_serving: recipe["pricePerServing"],
-#     category: "vegetarian",
-#     user_id: andy.id
-#   )
-#   file = URI.open(recipe["image"])
-#   meal.photo.attach(io: file, filename: "recipe-picture.jpg", content_type: "image/jpg")
-
-#   # add indredients
-#   recipe["extendedIngredients"].each do |ingredient|
-
-#     new_ingredient = Ingredient.create(
-#       name: search for name of grocerie from map API with servings being recipe["servings"]
-#       instruction_name: ingredient["original"],
-#       size: 1,
-#       price: [2.99, 3.99, 4.99, 2.49, 1.39, 0.99].sample
-#     )
-
-#     MealIngredient.new(
-#       quantity: recipe["servings"],
-#       meal_id: meal.id,
-#       ingredient_id: new_ingredient.id
-#     )
-#   end
-# end
-
-##################################################################################################
-
-user_url = "https://randomuser.me/api/?results=2"
+############ Create all other Users with Recipes ##############
+user_url = "https://randomuser.me/api/?results=4"
 user_response = Net::HTTP.get(URI(user_url))
 user_data = JSON.parse(user_response)["results"]
 
@@ -179,8 +74,8 @@ user_data.each do |user|
     email: user["email"],
     password: "123456",
     name: "#{user["name"]["first"]} #{user["name"]["last"]}",
-    description: Faker::Job.title,
-    bio: "I love #{Faker::Food.ethnic_category} and have plenty of meals prepared for you to cook.",
+    description: "#{Faker::Job.unique.title}, #{Faker::Hobby.activity}",
+    bio: "My favorite kind of cuisine? #{Faker::Food.ethnic_category}! And I have plenty of Recipes prepared for you!!! Some are simple dishes, some recipes are quite advanced... but I am sure that if you watch my video you can easily do them all! So have FUN.",
     instagram: "instagram.com",
     you_tube: "youtube.com"
   )
@@ -239,8 +134,8 @@ user_data.each do |user|
         else
           title = "Kerygold Cooking Magic 250ml"
         end
-
         #############################
+
         new_ingredient = Ingredient.create(
           name: title,
           instruction_name: ingredient["original"],
