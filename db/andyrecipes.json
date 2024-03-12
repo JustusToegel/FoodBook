@@ -1,0 +1,62 @@
+{
+  "recipes": [
+    {
+      "name": "Classic Spaghetti Carbonara",
+      "description": "A timeless Italian pasta dish featuring spaghetti tossed in a creamy egg and Parmesan cheese sauce, with crispy bacon.",
+      "ingredients": [
+        { "name": "Barilla Spaghetti Pasta (1 lb)", "price": 2.49 },
+        { "name": "Oscar Mayer Fully Cooked Bacon (8 slices)", "price": 3.99 },
+        { "name": "Eggland's Best Large Eggs (12 eggs)", "price": 2.29 },
+        { "name": "Kraft Grated Parmesan Cheese (8 oz)", "price": 3.49 },
+        { "name": "McCormick Ground Black Pepper (1.5 oz)", "price": 1.99 },
+        { "name": "Pompeian Extra Virgin Olive Oil (16 oz)", "price": 4.99 }
+      ],
+      "instructions": "<ol><li>Cook spaghetti according to package instructions until al dente.</li><li>In a skillet, cook bacon until crispy. Remove bacon and chop into small pieces.</li><li>In a bowl, whisk together eggs, grated Parmesan cheese, and black pepper.</li><li>Drain spaghetti and add it to the skillet with the bacon fat. Turn off the heat.</li><li>Quickly pour the egg mixture over the hot spaghetti and toss until the eggs thicken and coat the pasta.</li><li>Serve immediately with additional grated Parmesan cheese and black pepper on top.</li></ol>"
+    },
+    {
+      "name": "Vegetarian Chickpea Curry",
+      "description": "A flavorful and comforting curry made with chickpeas simmered in a fragrant coconut milk sauce, served over brown rice.",
+      "ingredients": [
+        { "name": "Bush's Best Garbanzo Beans (Canned) (15 oz)", "price": 1.99 },
+        { "name": "Thai Kitchen Organic Coconut Milk (13.66 oz)", "price": 2.79 },
+        { "name": "McCormick Gourmet Organic Curry Powder (1.7 oz)", "price": 4.29 },
+        { "name": "Uncle Ben's Whole Grain Brown Rice (32 oz)", "price": 3.49 }
+      ],
+      "instructions": "<ol><li>In a large skillet, sauté chopped onion, minced garlic, and grated ginger until softened.</li><li>Add drained chickpeas, coconut milk, and curry powder. Simmer for 10-15 minutes.</li><li>Meanwhile, cook brown rice according to package instructions.</li><li>Serve chickpea curry over cooked rice.</li></ol>"
+    },
+    {
+      "name": "Grilled Chicken Caesar Salad",
+      "description": "A classic salad featuring grilled chicken breast served over crisp romaine lettuce, tossed in creamy Caesar dressing and topped with Parmesan cheese and croutons.",
+      "ingredients": [
+        { "name": "Perdue Fresh Boneless Skinless Chicken Breasts (2 lb)", "price": 7.99 },
+        { "name": "Fresh Express Romaine Lettuce (9 oz)", "price": 2.49 },
+        { "name": "Marie's Caesar Dressing (12 oz)", "price": 3.29 },
+        { "name": "Kraft Grated Parmesan Cheese (8 oz)", "price": 3.49 },
+        { "name": "Pepperidge Farm Classic Caesar Croutons (5 oz)", "price": 2.99 }
+      ],
+      "instructions": "<ol><li>Season chicken breasts with salt and pepper. Grill until cooked through, about 6-8 minutes per side.</li><li>Chop romaine lettuce and toss with Caesar dressing.</li><li>Slice grilled chicken and place on top of the salad.</li><li>Sprinkle grated Parmesan cheese and croutons over the salad. Serve with lemon wedges on the side.</li></ol>"
+    },
+    {
+      "name": "Beef Tacos",
+      "description": "A family-friendly meal featuring seasoned ground beef served in soft flour tortillas with shredded cheese, lettuce, tomatoes, and sour cream.",
+      "ingredients": [
+        { "name": "Ground Beef (80/20 Lean) (1 lb)", "price": 5.99 },
+        { "name": "Mission Soft Taco Flour Tortillas (10 count)", "price": 2.99 },
+        { "name": "McCormick Original Taco Seasoning Mix (1 oz)", "price": 1.49 },
+        { "name": "Kraft Natural Shredded Cheese (8 oz)", "price": 2.99 },
+        { "name": "Daisy Sour Cream (16 oz)", "price": 1.99 }
+      ],
+      "instructions": "<ol><li>In a skillet, brown ground beef over medium heat. Drain excess fat.</li><li>Add taco seasoning mix and water according to package instructions. Simmer for 5 minutes.</li><li>Warm tortillas in a separate skillet or microwave.</li><li>Assemble tacos with beef, shredded cheese, diced tomatoes, diced onions, and any other desired toppings.</li></ol>"
+    },
+    {
+      "name": "Pesto Pasta with Cherry Tomatoes",
+      "description": "A simple and vibrant pasta dish featuring penne pasta tossed in basil pesto sauce and garnished with sweet cherry tomatoes.",
+      "ingredients": [
+        { "name": "Barilla Classic Basil Pesto Sauce (6.3 oz)", "price": 3.49 },
+        { "name": "NatureSweet Cherubs Cherry Tomatoes (1 pint)", "price": 2.99 },
+        { "name": "Barilla Collezione Penne Pasta (16 oz)", "price": 2.49 }
+      ],
+      "instructions": "<ol><li>Cook pasta according to package instructions until al dente.</li><li>In a large skillet, heat pesto sauce over medium heat. Add halved cherry tomatoes and cooked pasta.</li><li>Toss until the pasta is well coated. Serve with grated Parmesan cheese on top.</li></ol>"
+    }
+  ]
+}
