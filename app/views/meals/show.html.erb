@@ -10,13 +10,17 @@
 
     <div class="col">
 
+
       <div class="meal-info">
         <h1 class="meal-name"><%= @meal.name %></h1>
-        <%= link_to "Edit Meal", edit_meal_path(@meal), class: "edit-btn" %>
+        <% if @meal.user_id == current_user.id %>
+        <% raise %>
+          <%= link_to "Edit Meal", edit_meal_path(@meal), class: "edit-btn" %>
+        <% end %>
         <hr>
       </div>
 
-      <div class="meal-actions">
+      <div class="meal-actions" data-controller="counter-buttons">
         <%= simple_form_for([@meal,@cart_item])  do |f| %>
           <div class="row">
 
@@ -32,9 +36,10 @@
               <i class="fa-regular fa-user"></i>
               <p>Servings</p>
               <hr>
-              <div class="counter" data-controller="counter-buttons">
+              <div class="counter">
                 <button type="button" data-action="click->counter-buttons#plus">+</button>
-                <span><%= @cart_item.amount.to_i + 1 %></span>
+                <input type="hidden" name="amount" data-counter-buttons-target="input">
+                <span data-counter-buttons-target="counter"><%= @cart_item.amount.to_i%></span>
                 <button type="button" data-action="click->counter-buttons#minus">-</button>
               </div>
             </div>
