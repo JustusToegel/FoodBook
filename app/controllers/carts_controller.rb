@@ -6,13 +6,12 @@ class CartsController < ApplicationController
 
   def create
     @cart_item = Cart.new
-    if (defined? cart_params[:amount])
-      @cart_item.amount = cart_params[:amount]
+    if (defined? params[:amount])
+      @cart_item.amount = params[:amount]
     end
     @cart_item.user = current_user
     @cart_item.meal_id = params[:meal_id].to_i
     @cart_item.save
-
     if @cart_item.save
       # redirect_to user_path(@cart_item.meal.user)
       # redirect_to meal_path(@cart_item.meal)

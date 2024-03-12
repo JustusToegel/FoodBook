@@ -205,7 +205,7 @@ user_data.each do |user|
         instructions: recipe["instructions"],
         prep_time: recipe["readyInMinutes"],
         category: diet,
-        user_id: new_user.id,
+        user_id: new_user,
         servings: recipe["servings"]
       )
       file = URI.open(recipe["image"])
