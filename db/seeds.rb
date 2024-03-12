@@ -58,6 +58,39 @@ andy = User.create(
   instagram: "instagram.com",
   you_tube: "youtube.com"
   )
+
+  jason_data = File.read("db/andyrecipes.json")
+  andyrecipes = JSON.parse(jason_data)
+  andyrec = andyrecipes["recipes"]
+
+
+  andyrec.each do |recipe|
+    meal = Meal.create(
+      name: recipe["name"],
+      description: recipe["description"],
+      instructions: recipe["instructions"],
+      prep_time: [30, 45],
+      category: "vegan",
+      user_id: andy.id,
+      servings: 2
+    )
+    recipe["ingredients"].each do |ingredient|
+
+      new_ingredient = Ingredient.create(
+        name: ingredient["name"],
+        instruction_name: ingredient["name"],
+        size: 1,
+        price: ingredient["price"]
+      )
+
+      MealIngredient.create(
+        quantity: 1,
+        meal_id: meal.id,
+        ingredient_id: new_ingredient.id
+      )
+    end
+  end
+
 # Seeding User with Meals and Ingredients
 # 10.times do
 #   user = User.new(
@@ -156,7 +189,9 @@ user_data.each do |user|
 
   2.times do
     diet = ["ketogenic", "vegetarian", "vegan", "pescetarian", "italian"].sample
-    api_key = "db6a8b3c79944976acd8ca04cd447035"
+    # api_key = "db6a8b3c79944976acd8ca04cd447035" #Justus
+    # api_key = "bdad344848004f829dbd01d4f293d060" #Mago
+    api_key = "2d3dac26308744f7b8d10bcc305fb34d" #Mago 2
     uri = URI("https://api.spoonacular.com/recipes/random?number=1&include-tags=#{diet}&apiKey=#{api_key}")
     response = Net::HTTP.get(uri)
     data = JSON.parse(response)
@@ -181,7 +216,7 @@ user_data.each do |user|
 
         #############################
         ing_uri = URI.parse("https://api.spoonacular.com/food/ingredients/map")
-        ing_params = { apiKey: "db6a8b3c79944976acd8ca04cd447035" }
+        ing_params = { apiKey: api_key }
         ing_uri.query = URI.encode_www_form(ing_params)
 
         # Construct the request object
@@ -198,7 +233,12 @@ user_data.each do |user|
         }.to_json
 
         ing_response = ing_http.request(ing_request)
-        title = JSON.parse(ing_response.body)[0]["products"][0]["title"]
+
+        if JSON.parse(ing_response.body)[0]["products"].size > 0
+          title = JSON.parse(ing_response.body)[0]["products"][0]["title"]
+        else
+          title = "Kerygold Cooking Magic 250ml"
+        end
 
         #############################
         new_ingredient = Ingredient.create(
@@ -208,7 +248,7 @@ user_data.each do |user|
           price: [2.99, 3.99, 4.99, 2.49, 1.39, 0.99].sample
         )
 
-        MealIngredient.new(
+        MealIngredient.create(
           quantity: 1,
           meal_id: meal.id,
           ingredient_id: new_ingredient.id
