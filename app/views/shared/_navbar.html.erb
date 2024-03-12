@@ -18,6 +18,7 @@
           <li class="nav-item align-self-center">
             <%= link_to carts_path, class: "nav-link"  do %>
               <i class="fa-solid fa-cart-shopping"></i>
+              <span><%= current_user.carts.count %></span>
             <% end %>
           </li>
         <% end %>
