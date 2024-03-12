@@ -1,13 +1,56 @@
  <div class="show-meal">
-  <div class="meal-picture">
-    <% if @meal.photo.attached? %>
-      <%= cl_image_tag @meal.photo.key %>
-    <% end %>
-  </div>
 
-  <div class="meal-info">
-    <p class="meal-name"><%= @meal.name %></p>
-    <%= link_to "Edit Meal", edit_meal_path(@meal), class: "edit-btn" %>
+  <div class="recipe-info row">
+
+    <div class="meal-picture col">
+      <% if @meal.photo.attached? %>
+        <%= cl_image_tag @meal.photo.key %>
+      <% end %>
+    </div>
+
+    <div class="col">
+
+      <div class="meal-info">
+        <h1 class="meal-name"><%= @meal.name %></h1>
+        <%= link_to "Edit Meal", edit_meal_path(@meal), class: "edit-btn" %>
+        <hr>
+      </div>
+
+      <div class="meal-actions">
+        <%= simple_form_for([@meal,@cart_item])  do |f| %>
+          <div class="row">
+
+            <div class="meal-prep-time col">
+              <i class="fa-regular fa-clock"></i>
+              <p>Prep Time</p>
+              <hr>
+              <p><%= @meal.prep_time %> minutes</p>
+            </div>
+              <%# if logged in you should have the option to edit the recipe %>
+
+            <div class="meal-servings col">
+              <i class="fa-regular fa-user"></i>
+              <p>Servings</p>
+              <hr>
+              <div class="counter" data-controller="counter-buttons">
+                <button type="button" data-action="click->counter-buttons#plus">+</button>
+                <span><%= @cart_item.amount.to_i + 1 %></span>
+                <button type="button" data-action="click->counter-buttons#minus">-</button>
+              </div>
+            </div>
+
+
+          </div>
+          <%= f.submit "Add to Cart", class: "btn btn-success w-100" %>
+        <% end %>
+      </div>
+    </div>
+
+
+  <%# if logged in you should have the option to edit the recipe %>
+
+
+
   </div>
 
   <div class="meal-description">
@@ -21,35 +64,14 @@
       <h2>Ingredients</h2>
       <ul>
         <% @meal.ingredients.each do |ingredient| %>
-          <li><%= ingredient.name %></li>
+          <li><%= ingredient.name %>, <%# ingredient.instructuion_name %></li>
         <% end %>
       </ul>
     </div>
-    <div class="meal-actions">
-    <%= simple_form_for([@meal,@cart_item])  do |f| %>
-      <div class="d-flex">
+   <div class="youtube">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Uh_c2jiRnTI?si=qHX3goUZ-gklI7uk&autoplay=0&loop=0&controls=1&rel=0&modestbranding=1" title="Cook With us!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
 
-        <div class="meal-prep-time">
-          <p><%= @meal.prep_time %> minutes</p>
-        </div>
-          <%# if logged in you should have the option to edit the recipe %>
-
-        <div class="meal-servings">
-          <i class="fa-regular fa-user"></i>
-          <p>Servings</p>
-          <hr>
-          <div class="counter" data-controller="counter-buttons">
-            <button type="button" data-action="click->counter-buttons#plus">+</button>
-              <%= f.input :amount, as: :text , input_html: {rows: 1, cols: 1}, class: "number-input", label: false %>
-            <button type="button" data-action="click->counter-buttons#minus">-</button>
-          </div>
-        </div>
-
-
-      </div>
-      <%= f.submit "Add to Cart", class: "btn btn-success w-100" %>
-     <% end %>
-     </div>
   </div>
 
   <div class="meal-instructions">
