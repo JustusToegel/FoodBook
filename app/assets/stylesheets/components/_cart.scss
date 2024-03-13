@@ -1,13 +1,134 @@
 .cart-form {
-  background-color: #fafafa;
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
-  width: 600px;
+  margin: 100px 100px;
+}
+
+.cart-header {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-links{
+  text-align: center;
+}
+.continue-link {
+ padding: 10px;
+ margin: auto;
+}
+
+.continue-link:hover{
+  color:#00d23c;
+}
+.traslate-button {
+  width: 100%;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 25px;
+  margin-bottom: 30px;
+  background-color: #00d23c;
+  color:white;
+  text-align: center;
+  width: 150px;
+  height: 40px;
+}
+
+.traslate-button:hover {
+  color: #fafafa;
+  transition: all 0.5s;
+  background-color: #037e26;
+}
+
+.cart-action {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
+.cart-action span {
+  padding: 0 10px;
+  font-weight: bold;
+}
+
+
+.delete-btn {
+  position: relative;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid #cc0000;
+  background-color: #e50000;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.button {
+  position: relative;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid #cc0000;
+  background-color: #e50000;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.button .button__text, .button .button__icon {
+  transition: all 0.3s;
+}
+
+.button .button__text {
+  transform: translateX(35px);
+  color: #fff;
+  font-weight: 600;
+}
+
+.button .button__icon {
+  position: absolute;
+  transform: translateX(109px);
+  height: 100%;
+  width: 39px;
+  background-color: #cc0000;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  flex-direction: column;
-  gap: 10px;
-  padding: 30px;
-  border-radius: 8px;
-  margin: 100px auto;
-  border: solid 1px #00D23B;
+}
+
+.button .svg {
+  width: 20px;
+}
+
+.button:hover {
+  background: #cc0000;
+}
+
+.button:hover .button__text {
+  color: transparent;
+}
+
+.button:hover .button__icon {
+  width: 148px;
+  transform: translateX(0);
+}
+
+.button:active .button__icon {
+  background-color: #b20000;
+}
+
+.button:active {
+  border: 1px solid #b20000;
+}
+.traslate-btn {
+  width: 100%;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 25px;
+  margin-right: 10px;
+  background-color: #00D23B;
+  color:white;
+  text-align: center;
 }
