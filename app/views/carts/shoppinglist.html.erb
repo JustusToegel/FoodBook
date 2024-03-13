@@ -1,21 +1,45 @@
-<div class="cart-form">
-  <ul>
-    <% @cart.each do |cart_item| %>
-      <% cart_item.meal.ingredients.each do |ingredient| %>
-        <li>
-          <%= ingredient.name %>
-          <%# how many times %>
-          <% ingredient.meal_ingredients.each do |item| %>
-            <% if item.meal == cart_item.meal %>
-              <% number = item.quantity.to_i * cart_item.amount %>
-              <p> For <%= cart_item.amount %> servings you need the package<%= number %> times</p>
-              <%# price %>
-              <% price = ingredient.price * number  %>
-              <p> costing: <%= price %>€</p>
-            <% end %>
-          <% end %>
-        </li>
-       <% end %>
-    <% end %>
-  </ul>
+<% total = 0 %>
+<div class="shoppingcart-form">
+
+    <div class="shopping-list">
+      <h2>Your Shopping List</h2>
+        <div class="table-list">
+          <table>
+            <thead>
+              <tr>
+                <th>Ingredient</th>
+                <th>Quantity</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @cart.each do |cart_item| %>
+                <% cart_item.meal.ingredients.each do |ingredient| %>
+                  <% meal_ingredient = cart_item.meal.meal_ingredients.find_by(ingredient_id: ingredient.id) %>
+                  <% if meal_ingredient %>
+                    <% number = (meal_ingredient.quantity.to_i * cart_item.amount / cart_item.meal.servings).round %>
+                    <tr>
+                      <td><%= ingredient.name %></td>
+                      <td>For <%= cart_item.amount %> servings you need the item <%= number %> times</td>
+                      <td>costing: <%= (ingredient.price * number).round(2) %>€</td>
+                    </tr>
+
+                    <% total += (ingredient.price * number).round(2) %>
+
+                  <% end %>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+    <div class="total">
+      <hr>
+      <h3>TOTAL = <%= number_with_precision(total, precision: 2) %></h3>
+    </div>
+  </div>
+<div class="list-actions">
+  <a class="checkout"href="https://www.biomarkt.de/">Checkout</a>
+  <%= link_to "Continue Shopping", root_path, class: "continue-link", style: "text-decoration: none;" %>
+</div>
 </div>

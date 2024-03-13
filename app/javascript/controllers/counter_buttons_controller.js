@@ -13,5 +13,6 @@ export default class extends Controller {
   }
   minus(event) {
     this.counterTarget.innerText = parseInt(this.counterTarget.innerText) - 1
+    this.inputTarget.value = this.counterTarget.innerText
   }
 }
