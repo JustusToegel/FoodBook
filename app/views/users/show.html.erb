@@ -10,6 +10,23 @@
       <h1 style="color: black;"><%= @user.name %></h1>
       <p style="color: green;">211k followers</p>
       <p><%= @user.description %></p>
+      <ul class="social-media-icon">
+      <li class="list-inline-item">
+        <%= link_to "#" do %>
+          <%= image_tag 'instagram.png' %>
+        <% end %>
+      </li>
+      <li class="list-inline-item">
+        <%= link_to "#" do %>
+          <%= image_tag 'facebook.png' %>
+        <% end %>
+      </li>
+      <li class="list-inline-item">
+        <%= link_to "#" do %>
+          <%= image_tag 'youtube.png' %>
+        <% end %>
+      </li>
+      </ul>
     </div>
     <div class="btn-follow">
       <button>Follow</button>
