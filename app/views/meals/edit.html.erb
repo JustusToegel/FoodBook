@@ -6,18 +6,11 @@
   <h1 class="mb-4">Edit recipe:</h1>
   <%= simple_form_for(@meal) do |f| %>
 
-    <div class="row">
-
+    <div class="row my-3">
       <div class="col">
         <%= f.label :name, { class: "edit-form-label"} %><br>
         <%= f.text_field :name,  { class: "edit-form-input", placeholder: "Name of Recipe" } %>
       </div>
-
-      <div class="col">
-        <%= f.label :prep_time, { class: "edit-form-label"} %><br>
-        <%= f.text_field :prep_time,  { class: "edit-form-input", placeholder: "Prep Time" } %>
-      </div>
-
     </div>
 
     <div class="row my-3">
@@ -33,11 +26,22 @@
         <%= f.text_field :instructions, { class: "edit-form-input", placeholder: "Instructions" } %>
       </div>
     </div>
-
     <div class="row my-3">
       <div class="col">
         <%= f.label :category, { class: "edit-form-label"} %><br>
         <%= f.text_field :category, { class: "edit-form-input", placeholder: "Category" } %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <%= f.label :prep_time, { class: "edit-form-label"} %><br>
+        <%= f.text_field :prep_time,  { class: "edit-form-input", placeholder: "Prep Time" } %>
+      </div>
+
+      <div class="col">
+        <%= f.label :servings, { class: "edit-form-label"} %><br>
+        <%= f.text_field :servings,  { class: "edit-form-input", placeholder: "Servings" } %>
       </div>
     </div>
 

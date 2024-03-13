@@ -44,7 +44,11 @@
       <div class="card-user-info">
         <p>56 recipes<br>211k followers</p>
         <div class="tags">
-          <button style>HIGH PROTEIN</button><button>VEGAN</button><button>LOW CARB</button>
+          <% if user.meals.count > 2 %>
+            <button style><%= user.meals.first.category.upcase %></button><button><%= user.meals.last.category.upcase %></button><button><%= user.meals[1].category.upcase %></button>
+          <% else %>
+            <button style>VEGAN</button><button>LOW CARB</button><button>FIT FOOD</button>
+          <% end  %>
         </div>
       </div>
 

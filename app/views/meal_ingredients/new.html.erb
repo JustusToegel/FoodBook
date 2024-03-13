@@ -1,0 +1,31 @@
+<br>
+<br>
+<br>
+<br>
+<%# Form for Ingredient Search %>
+<div class="greenbox">
+  <div class="search-bar">
+    <%= form_with url: new_user_meal_path, method: :get do %>
+      <div class="form-search form-group">
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control-search string required",
+          placeholder: "What do you need?"
+        %>
+        <%= button_tag(name: "", class: "search-button") do %>
+          <i class="fas fa-search"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <ul>
+  <% @ingredients.each do |ingredient| %>
+    <li><%= ingredient.name %></li>
+  <% end %>
+  </ul>
+</div>
+<%# end of Form with results %>
+<div class="greenbox">
+  <%= link_to "Done", root_path, class: "add-recipe-btn" %>
+</div>

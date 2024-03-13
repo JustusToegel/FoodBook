@@ -1,4 +1,7 @@
-<div class="cart-form">
+<% total = 0 %>
+<div>
+<div class="shoppingcart-form">
+  <h2>Your Shopping List</h2>
   <ul>
     <% @cart.each do |cart_item| %>
       <% cart_item.meal.ingredients.each do |ingredient| %>
@@ -7,10 +10,11 @@
           <%# how many times %>
           <% ingredient.meal_ingredients.each do |item| %>
             <% if item.meal == cart_item.meal %>
-              <% number = item.quantity.to_i * cart_item.amount %>
-              <p> For <%= cart_item.amount %> servings you need the package<%= number %> times</p>
+              <% number = (item.quantity.to_i * cart_item.amount / cart_item.meal.servings).round %>
+              <p> For <%= cart_item.amount %> servings you need the item <%= number %> times</p>
               <%# price %>
-              <% price = ingredient.price * number  %>
+              <% price = (ingredient.price * number).round(2)  %>
+              <% total += price %>
               <p> costing: <%= price %>€</p>
             <% end %>
           <% end %>
@@ -18,4 +22,6 @@
        <% end %>
     <% end %>
   </ul>
+  <h3>TOTAL = <%= total %></h3>
+</div>
 </div>

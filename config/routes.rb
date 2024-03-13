@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'meal_ingredients/index'
+  get 'meal_ingredients/new'
+  get 'meal_ingredients/create'
   get 'ingredients/new'
   get 'ingredients/create'
   get 'ingredients/index'
@@ -14,7 +17,9 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :ingredients, only: %i[new create index]
   resources :users do
-    resources :meals, only: %i[new create]
+    resources :meals, only: %i[new create] do
+      resources :meal_ingredients, only: %i[index new create]
+    end
   end
 
   resources :meals, only: %i[show destroy edit update] do
