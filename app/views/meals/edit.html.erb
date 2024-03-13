@@ -1,27 +1,26 @@
-<div class="create-recipe-form">
+<%# <div class="create-recipe-form">
   <h1 class="title-form">Edit recipe</h1>
   <%= simple_form_for(@meal) do |f| %>
-    <div class="form-content">
+    <%# <div class="form-content">
       <div class="top-left">
         <%= f.label :name %>
-        <%= f.text_field :name %>
-      </div>
+        <%# <%= f.text_field :name %>
+      <%# </div>
       <div class="bottom-left">
         <%= f.label :description %>
-        <%= f.text_field :description %>
-      </div>
+        <%# <%= f.text_field :description %>
+      <%# </div>
       <div class="top-right">
         <%= f.label :instructions %>
-        <%= f.text_field :instructions %>
-      </div>
+        <%# <%= f.text_field :instructions %>
+      <%# </div>
       <div class="bottom-right">
         <%= f.input :photo, as: :file %>
-        <%= f.submit %>
-      </div>
+        <%# <%= f.submit %>
+      <%# </div>
     </div>
   <% end %>
-</div>
-
+<%# </div> %>
 
 <%# Form for Ingredient Search %>
 <div class="greenbox">
