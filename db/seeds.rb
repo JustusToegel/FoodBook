@@ -82,7 +82,7 @@ user_data.each do |user|
   file = URI.open(user["picture"]["large"])
   new_user.photo.attach(io: file, filename: "profile-picture.jpg", content_type: "image/jpg")
 
-  1.times do
+  2.times do
     diet = ["ketogenic", "vegetarian", "vegan", "pescetarian", "italian"].sample
     # justus
     api_key = "db6a8b3c79944976acd8ca04cd447035"
