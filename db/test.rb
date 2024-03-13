@@ -1,45 +1,32 @@
+# require 'faker'
+# require 'net/http'
 # require 'json'
+# require 'nokogiri'
+# require 'open-uri'
 
+# api_key = "db6a8b3c79944976acd8ca04cd447035"
 
+# ing_uri = URI.parse("https://api.spoonacular.com/food/ingredients/map")
+# ing_params = { apiKey: api_key }
+# ing_uri.query = URI.encode_www_form(ing_params)
 
-# ingjason_data = File.read("db/ingredients.json")
-# cgptingredients = JSON.parse(ingjason_data)
-# items = cgptingredients["ingredients"]
+# # Construct the request object
+# ing_http = Net::HTTP.new(ing_uri.host, ing_uri.port)
+# ing_http.use_ssl = true
 
-# items.each do |ingredient|
-#   Ingredient.create(
-#     name: ingredient["name"],
-#     instruction_name: ingredient["name"],
-#     size: 1,
-#     price: ingredient["price"]
-#   )
-# end
+# ing_request = Net::HTTP::Post.new(ing_uri.request_uri)
+# ing_request["Content-Type"] = "application/json"
 
+# # Add any required parameters to the request body
+# ing_request.body = {
+#   "ingredients": ["cwnkjweceoce"],
+#   "servings": 2
+# }.to_json
 
-###########################################################################
+# ing_response = ing_http.request(ing_request)
 
-#   meal = Meal.create(
-#     name: recipe["name"],
-#     description: recipe["description"],
-#     instructions: recipe["instructions"],
-#     prep_time: [30, 45],
-#     category: "vegan",
-#     user_id: andy.id,
-#     servings: 2
-#   )
-#   recipe["ingredients"].each do |ingredient|
-
-#     new_ingredient = Ingredient.create(
-#       name: ingredient["name"],
-#       instruction_name: ingredient["name"],
-#       size: 1,
-#       price: ingredient["price"]
-#     )
-
-#     MealIngredient.create(
-#       quantity: 1,
-#       meal_id: meal.id,
-#       ingredient_id: new_ingredient.id
-#     )
-#   end
+# if ing_response.body == "[]"
+#   title = "Kerygold Cooking Magic 250ml"
+# else
+#   title = JSON.parse(ing_response.body)[0]["products"][0]["title"]
 # end
