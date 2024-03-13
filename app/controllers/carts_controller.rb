@@ -6,12 +6,17 @@ class CartsController < ApplicationController
 
   def create
     @cart_item = Cart.new
-    if (defined? params[:amount])
-      @cart_item.amount = params[:amount]
+    if defined? params[:cart][:amount]
+      params.require(:cart).permit(:amount)
+      @cart_item.amount = params[:cart][:amount].to_i
+    else
+      @cart_item.amount = params[:amount].to_i
     end
     @cart_item.user = current_user
     @cart_item.meal_id = params[:meal_id].to_i
-    @cart_item.save
+    @cart_item.save!
+
+
     if @cart_item.save
       # redirect_to user_path(@cart_item.meal.user)
       # redirect_to meal_path(@cart_item.meal)

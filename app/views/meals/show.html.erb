@@ -38,7 +38,7 @@
               <div class="counter">
                 <button type="button" data-action="click->counter-buttons#plus">+</button>
                 <input type="hidden" name="amount" data-counter-buttons-target="input">
-                <span data-counter-buttons-target="counter"><%= @cart_item.amount.to_i%></span>
+                <span data-counter-buttons-target="counter"><%= @meal.servings.to_i%></span>
                 <button type="button" data-action="click->counter-buttons#minus">-</button>
               </div>
             </div>
@@ -61,7 +61,7 @@
     <h2>Description</h2>
     <div><%= raw(@meal.description) %></div>
   </div>
-
+  <hr>
   <div class="meal-body">
 
     <div class="ingredient-list">
@@ -72,9 +72,10 @@
         <% end %>
       </ul>
     </div>
-   <div class="youtube">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Uh_c2jiRnTI?si=qHX3goUZ-gklI7uk&autoplay=0&loop=0&controls=1&rel=0&modestbranding=1" title="Cook With us!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
+    <div class="meal-video">
+      <h2>Cook with us!</h2>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/Uh_c2jiRnTI?si=qHX3goUZ-gklI7uk&autoplay=0&loop=0&controls=1&rel=0&modestbranding=1" title="Cook With us!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
 
   </div>
 

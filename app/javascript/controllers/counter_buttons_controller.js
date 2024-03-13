@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ["counter", "input"]
 
   connect() {
-    console.log(parseInt(this.counterTarget.innerText) + 1)
+    this.inputTarget.value = this.counterTarget.innerText
   }
   plus(event) {
     this.counterTarget.innerText = parseInt(this.counterTarget.innerText) + 1
