@@ -4,64 +4,64 @@ require 'json'
 require 'nokogiri'
 require 'open-uri'
 
-Ingredient.destroy_all
-Meal.destroy_all
-User.destroy_all
+# Ingredient.destroy_all
+# Meal.destroy_all
+# User.destroy_all
 
 ########## basic ingredients ####################
-ingjason_data = File.read("db/ingredients.json")
-cgptingredients = JSON.parse(ingjason_data)
-ingitems = cgptingredients["ingredients"]
+# ingjason_data = File.read("db/ingredients.json")
+# cgptingredients = JSON.parse(ingjason_data)
+# ingitems = cgptingredients["ingredients"]
 
-ingitems.each do |ingredient|
-  Ingredient.create(
-    name: ingredient["name"],
-    instruction_name: ingredient["name"],
-    size: 1,
-    price: ingredient["price"]
-  )
-end
+# ingitems.each do |ingredient|
+#   Ingredient.create(
+#     name: ingredient["name"],
+#     instruction_name: ingredient["name"],
+#     size: 1,
+#     price: ingredient["price"]
+#   )
+# end
 ########### End of basic ingredients ################
 
 ########### Andy User with Recipes ################################
-andy = User.create(
-  email: "andy@gmail.com",
-  password: "123456",
-  name: "Andy Shi",
-  description: "Hobby Cook and Coding Lover",
-  bio: "Hi folks! I am Andy and I love to cook. I have plenty of recipes prepared for you and can wait to add even more! Stay tuned for weekly updates and eat like me! At the end, you are what you eat and everybody wants to be like me! So.. let's get cooking ...",
-  instagram: "instagram.com",
-  you_tube: "youtube.com"
-  )
+# andy = User.create(
+#   email: "andy@gmail.com",
+#   password: "123456",
+#   name: "Andy Shi",
+#   description: "Hobby Cook and Coding Lover",
+#   bio: "Hi folks! I am Andy and I love to cook. I have plenty of recipes prepared for you and can wait to add even more! Stay tuned for weekly updates and eat like me! At the end, you are what you eat and everybody wants to be like me! So.. let's get cooking ...",
+#   instagram: "instagram.com",
+#   you_tube: "youtube.com"
+#   )
 
-jason_data = File.read("db/andyrecipes.json")
-andyrecipes = JSON.parse(jason_data)
-andyrec = andyrecipes["recipes"]
+# jason_data = File.read("db/andyrecipes.json")
+# andyrecipes = JSON.parse(jason_data)
+# andyrec = andyrecipes["recipes"]
 
-andyrec.each do |recipe|
-  meal = Meal.create(
-    name: recipe["name"],
-    description: recipe["description"],
-    instructions: recipe["instructions"],
-    prep_time: [30, 45],
-    category: "vegan",
-    user_id: andy.id,
-    servings: 2
-  )
-  recipe["ingredients"].each do |ingredient|
-    new_ingredient = Ingredient.create(
-      name: ingredient["name"],
-      instruction_name: ingredient["name"],
-      size: 1,
-      price: ingredient["price"]
-    )
-    MealIngredient.create(
-      quantity: 1,
-      meal_id: meal.id,
-      ingredient_id: new_ingredient.id
-    )
-  end
-end
+# andyrec.each do |recipe|
+#   meal = Meal.create(
+#     name: recipe["name"],
+#     description: recipe["description"],
+#     instructions: recipe["instructions"],
+#     prep_time: [30, 45],
+#     category: "vegan",
+#     user_id: andy.id,
+#     servings: 2
+#   )
+#   recipe["ingredients"].each do |ingredient|
+#     new_ingredient = Ingredient.create(
+#       name: ingredient["name"],
+#       instruction_name: ingredient["name"],
+#       size: 1,
+#       price: ingredient["price"]
+#     )
+#     MealIngredient.create(
+#       quantity: 1,
+#       meal_id: meal.id,
+#       ingredient_id: new_ingredient.id
+#     )
+#   end
+# end
 ########## end of Andy ######################################
 
 ############ Create all other Users with Recipes ##############
