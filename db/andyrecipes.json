@@ -4,7 +4,7 @@
       "name": "Classic Spaghetti Carbonara",
       "description": "A timeless Italian pasta dish featuring spaghetti tossed in a creamy egg and Parmesan cheese sauce, with crispy bacon.",
       "ingredients": [
-        { "name": "Barilla Spaghetti Pasta (1 lb)", "price": 2.49 },
+        { "name": "Barilla Spaghetti Pasta (1 pack)", "price": 2.49 },
         { "name": "Oscar Mayer Fully Cooked Bacon (8 slices)", "price": 3.99 },
         { "name": "Eggland's Best Large Eggs (12 eggs)", "price": 2.29 },
         { "name": "Kraft Grated Parmesan Cheese (8 oz)", "price": 3.49 },
