@@ -3,9 +3,10 @@
 <br>
 <br>
 <%# Form for Ingredient Search %>
+<div class="d-flex">
 <div class="greenbox">
   <div class="search-bar">
-    <%= form_with url: new_user_meal_path, method: :get do %>
+    <%= form_with url: new_user_meal_meal_ingredient_path, method: :get do %>
       <div class="form-search form-group">
         <%= text_field_tag :query,
           params[:query],
@@ -20,12 +21,26 @@
   </div>
 
   <ul>
-  <% @ingredients.each do |ingredient| %>
-    <li><%= ingredient.name %></li>
+  <% @ingredients.first(15).each do |ingredient| %>
+    <li>
+    <%= simple_form_for([current_user, @meal, @meal_ingredient]) do |f| %>
+      <%= f.hidden_field :ingredient_id, value: ingredient.id %>
+      <%= f.submit ingredient.name, class: "add" %>
+    <% end %>
+    </li>
   <% end %>
   </ul>
 </div>
 <%# end of Form with results %>
 <div class="greenbox">
-  <%= link_to "Done", root_path, class: "add-recipe-btn" %>
+  <ul>
+    <% @list.each do |item| %>
+      <li><%= item.name %>
+      <%= link_to "Delete", meal_ingredient_path(@meal.meal_ingredients.where(ingredient_id: item).first), data: { turbo_method: :delete } %>
+      </li>
+    <% end %>
+  </ul>
+  <%= link_to "Done", meal_path(@meal), class: "add-recipe-btn align-self-end" %>
+
+</div>
 </div>

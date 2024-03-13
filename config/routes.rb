@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       resources :meal_ingredients, only: %i[index new create]
     end
   end
-
+  resources :meal_ingredients, only: %i[destroy]
   resources :meals, only: %i[show destroy edit update] do
     resources :carts, only: %i[create new edit update]
   end

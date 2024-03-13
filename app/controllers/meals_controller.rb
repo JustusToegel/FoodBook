@@ -15,7 +15,7 @@ class MealsController < ApplicationController
     @meal.save
 
     if @meal.save
-      redirect_to new_user_meal_meal_ingredient_path(@meal, current_user)
+      redirect_to new_user_meal_meal_ingredient_path(current_user, @meal)
     else
       render :new
     end
