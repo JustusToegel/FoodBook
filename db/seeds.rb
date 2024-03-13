@@ -65,7 +65,7 @@ end
 ########## end of Andy ######################################
 
 ############ Create all other Users with Recipes ##############
-user_url = "https://randomuser.me/api/?results=1"
+user_url = "https://randomuser.me/api/?results=2"
 user_response = Net::HTTP.get(URI(user_url))
 user_data = JSON.parse(user_response)["results"]
 
@@ -82,14 +82,14 @@ user_data.each do |user|
   file = URI.open(user["picture"]["large"])
   new_user.photo.attach(io: file, filename: "profile-picture.jpg", content_type: "image/jpg")
 
-  2.times do
+  3.times do
     diet = ["ketogenic", "vegetarian", "vegan", "pescetarian", "italian"].sample
     # justus
-    api_key = "db6a8b3c79944976acd8ca04cd447035"
+    # api_key = "db6a8b3c79944976acd8ca04cd447035"
     # Mago
     # api_key = "bdad344848004f829dbd01d4f293d060"
     # Mago2
-    # api_key = "2d3dac26308744f7b8d10bcc305fb34d"
+    api_key = "2d3dac26308744f7b8d10bcc305fb34d"
     uri = URI("https://api.spoonacular.com/recipes/random?number=1&include-tags=#{diet}&apiKey=#{api_key}")
     response = Net::HTTP.get(uri)
     data = JSON.parse(response)
@@ -103,12 +103,15 @@ user_data.each do |user|
         instructions: recipe["instructions"],
         prep_time: recipe["readyInMinutes"],
         category: diet,
-        user_id: new_user,
+        user_id: new_user.id,
         servings: recipe["servings"]
       )
       file = URI.open(recipe["image"])
       meal.photo.attach(io: file, filename: "recipe-picture.jpg", content_type: "image/jpg")
-
+      p "---------------"
+      p meal.errors
+      p meal
+      p "---------------"
       # add indredients
       recipe["extendedIngredients"].each do |ingredient|
 
@@ -136,6 +139,7 @@ user_data.each do |user|
           title = "Kerygold Cooking Magic 250ml"
         else
           title = JSON.parse(ing_response.body)[0]["products"][0]["title"]
+          p title
         end
         #############################
 
@@ -145,6 +149,8 @@ user_data.each do |user|
           size: 1,
           price: [2.99, 3.99, 4.99, 2.49, 1.39, 0.99].sample
         )
+
+        p new_ingredient
 
         MealIngredient.create(
           quantity: 1,
