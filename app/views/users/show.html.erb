@@ -49,6 +49,7 @@
             </div>
             <div>
               <%= simple_form_for([meal, @cart_item]) do |f| %>
+                <%= f.hidden_field :amount, value: meal.servings %>
                 <%= f.submit "Quick Add", class: "quick-add" %>
               <% end %>
             </div>
