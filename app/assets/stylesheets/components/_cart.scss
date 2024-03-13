@@ -19,7 +19,7 @@
 .continue-link:hover{
   color:#00d23c;
 }
-.traslate-button {
+.translate-button {
   width: 100%;
   border: none;
   padding: 10px 25px;
@@ -32,7 +32,7 @@
   height: 40px;
 }
 
-.traslate-button:hover {
+.translate-button:hover {
   color: #fafafa;
   transition: all 0.5s;
   background-color: #037e26;
@@ -59,10 +59,12 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  border: 1px solid #cc0000;
-  background-color: #e50000;
+  border: 1px solid #921b1b;
+  background-color: #921b1b;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: 23px;
+  font-weight: lighter ;
+
 }
 .button {
   position: relative;
@@ -71,10 +73,11 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  border: 1px solid #cc0000;
-  background-color: #e50000;
+  border: 1px solid #921b1b;
+  background-color: #921b1b;
   overflow: hidden;
   transition: all 0.3s;
+  border-radius: 25px;
 }
 
 .button .button__text, .button .button__icon {
@@ -92,7 +95,7 @@
   transform: translateX(109px);
   height: 100%;
   width: 39px;
-  background-color: #cc0000;
+  background-color: #921b1b;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,7 +106,7 @@
 }
 
 .button:hover {
-  background: #cc0000;
+  background:#921b1b;
 }
 
 .button:hover .button__text {
@@ -116,11 +119,11 @@
 }
 
 .button:active .button__icon {
-  background-color: #b20000;
+  background-color: #921b1b;
 }
 
 .button:active {
-  border: 1px solid #b20000;
+  border: 1px solid #921b1b;
 }
 .traslate-btn {
   width: 100%;
