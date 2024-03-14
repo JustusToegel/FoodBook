@@ -59,7 +59,7 @@
             <div class="pt-4">
               <h2><%= link_to meal.name, meal_path(meal), class: "text-decoration-none" %></h2>
               <div class="meal-tags">
-                <% category = ["FIT FOOD", "COMFORT", "LOW CARB", "HIGH PROTEIN", "GLUTEN FREE", "MEAL PREP", "VITAMINS"] %>
+                <% category = ["FIT FOOD", "COMFORT", "LOW CARB", "PROTEIN", "GLUTEN", "MEAL PREP", "VITAMINS"] %>
                 <%# <button>HIGH PROTEIN</button><button>VEGAN</button><button>LOW CARB</button> %>
                 <button><%= meal.category.upcase %></button><button><%= category.sample %></button><button><%= category.sample %></button>
               </div>
