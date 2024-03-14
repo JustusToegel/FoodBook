@@ -59,7 +59,7 @@
 ########## end of Andy ######################################
 
 ############ Create all other Users with Recipes ##############
-user_url = "https://randomuser.me/api/?results=2"
+user_url = "https://randomuser.me/api/?results=5"
 user_response = Net::HTTP.get(URI(user_url))
 user_data = JSON.parse(user_response)["results"]
 

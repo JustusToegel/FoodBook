@@ -17,7 +17,7 @@
                 <% cart_item.meal.ingredients.each do |ingredient| %>
                   <% meal_ingredient = cart_item.meal.meal_ingredients.find_by(ingredient_id: ingredient.id) %>
                   <% if meal_ingredient %>
-                    <% number = (meal_ingredient.quantity.to_i * cart_item.amount / cart_item.meal.servings).round %>
+                    <% number = (meal_ingredient.quantity.to_i * cart_item.amount / cart_item.meal.servings.to_f).ceil %>
                     <tr>
                       <td><%= ingredient.name %></td>
                       <td>For <%= cart_item.amount %> servings you need the item <%= number %> times</td>
@@ -25,7 +25,6 @@
                     </tr>
 
                     <% total += (ingredient.price * number).round(2) %>
-
                   <% end %>
                 <% end %>
               <% end %>
@@ -39,7 +38,7 @@
     </div>
   </div>
 <div class="list-actions">
-  <a class="checkout"href="https://www.biomarkt.de/">Checkout</a>
+  <a class="continue-link checkout"href="https://www.biomarkt.de/" style="color: white;"> Checkout</a>
   <%= link_to "Continue Shopping", root_path, class: "continue-link", style: "text-decoration: none;" %>
 </div>
 </div>

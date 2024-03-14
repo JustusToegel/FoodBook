@@ -9,21 +9,17 @@
     <div class="row my-3">
       <div class="col">
         <%= f.label :name, { class: "edit-form-label"} %><br>
-        <%= f.text_field :name,  { class: "edit-form-input", placeholder: "Name of Recipe" } %>
+        <%= f.text_field :name, class: "edit-form-input", placeholder: "Name of Recipe"%>
       </div>
     </div>
-
-    <div class="row my-3">
+        <div class="row">
       <div class="col">
-        <%= f.label :description, { class: "edit-form-label"} %><br>
-        <%= f.text_field :description, { class: "edit-form-input", placeholder: "Description" } %>
+        <%= f.input :prep_time, input_html: { type: "number", class: "edit-form-input" }, placeholder: "Prep Time", label: "Prep Time (minutes)" %>
       </div>
-    </div>
 
-    <div class="row my-3">
       <div class="col">
-        <%= f.label :instructions, { class: "edit-form-label"} %><br>
-        <%= f.text_field :instructions, { class: "edit-form-input", placeholder: "Instructions" } %>
+        <%= f.label :servings, { class: "edit-form-label"} %><br>
+        <%= f.input :servings, input_html: { type: "number" }, class: "edit-form-input", placeholder: "Servings", label: false %>
       </div>
     </div>
     <div class="row my-3">
@@ -33,25 +29,27 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col">
-        <%= f.label :prep_time, { class: "edit-form-label"} %><br>
-        <%= f.text_field :prep_time,  { class: "edit-form-input", placeholder: "Prep Time" } %>
-      </div>
 
+    <div class="row my-3">
       <div class="col">
-        <%= f.label :servings, { class: "edit-form-label"} %><br>
-        <%= f.text_field :servings,  { class: "edit-form-input", placeholder: "Servings" } %>
+        <%= f.input :description, class: "edit-form-input", as: :text, placeholder: "Description" %>
       </div>
     </div>
+
+    <div class="row my-3">
+      <div class="col">
+        <%= f.input :instructions, as: :text, class: "edit-form-input", placeholder: "Instructions" %>
+      </div>
+    </div>
+
+
 
     <div class="row">
       <%= f.input :photo, as: :file %>
     </div>
 
     <div class="bottom-right">
-        <%= f.submit "Create", class: "btn btn-success"%>
+        <%= f.submit "Next Step", class: "btn btn-success"%>
     </div>
   <% end %>
 </div>
-

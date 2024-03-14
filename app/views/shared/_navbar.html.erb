@@ -28,6 +28,7 @@
           <% end %>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <% if user_signed_in? %>
+              <%= link_to "My Profile", user_path(current_user), class: "dropdown-item" %>
               <%= link_to "Edit Profile", edit_user_path(current_user), class: "dropdown-item" %>
               <a class="dropdown-item" data-turbo-method="delete" href="<%= destroy_user_session_path %>">Log out</a>
             <% else %>

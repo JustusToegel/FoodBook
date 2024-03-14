@@ -60,3 +60,16 @@
   flex-direction: column;
   justify-content: center;
 }
+.checkout {
+  color: #fafafa;
+}
+.checkout:hover {
+  transform: scale(1.1);
+  transition: transform .3s ease-in-out;
+  color:white;
+}
+.continue-link:hover {
+  transform: scale(1.1);
+  transition: transform .3s ease-in-out;
+  font-style: italic;
+}
