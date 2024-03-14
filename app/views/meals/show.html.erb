@@ -15,6 +15,9 @@
         <h1 class="meal-name"><%= @meal.name %></h1>
         <% if @meal.user_id == current_user.id %>
           <%= link_to "Edit Meal", edit_meal_path(@meal), class: "edit-btn" %>
+          <%= link_to meal_path(@meal), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this Cart Item?" }, class: "meal-delete-btn" do %>
+            <i class="fa-solid fa-trash"></i>
+          <% end %>
         <% end %>
         <hr>
       </div>

@@ -30,12 +30,6 @@
   padding-top: 20px;
 }
 
-.edit-btn {
-  position: absolute;
-  right: 0px;
-  top: 0;
-}
-
 .meal-actions {
   padding: 0 60px;
 }
@@ -114,11 +108,27 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 .edit-btn {
-  border: none;
+  position: absolute;
+  right: 0px;
+  top: 0;
+  border: solid 1px #00D23B;
   padding: 10px 25px;
   border-radius: 25px;
   margin-right: 10px;
-  background-color: #00D23B;
-  color:white;
+  background-color: none;
   text-decoration: none;
+  color:#00D23B !important;
+  //font-weight: bold;
+}
+
+.meal-delete-btn {
+  position: absolute;
+  right: 130px;
+  top: 0;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 25px;
+  margin-right: 10px;
+  background-color: #e26f7b;
+  color:white !important;
 }
