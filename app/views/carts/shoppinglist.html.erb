@@ -17,7 +17,7 @@
                 <% cart_item.meal.ingredients.each do |ingredient| %>
                   <% meal_ingredient = cart_item.meal.meal_ingredients.find_by(ingredient_id: ingredient.id) %>
                   <% if meal_ingredient %>
-                    <% number = (meal_ingredient.quantity.to_i * cart_item.amount / cart_item.meal.servings).round %>
+                    <% number = (meal_ingredient.quantity.to_i * cart_item.amount / cart_item.meal.servings.to_f).ceil %>
                     <tr>
                       <td><%= ingredient.name %></td>
                       <td>For <%= cart_item.amount %> servings you need the item <%= number %> times</td>
