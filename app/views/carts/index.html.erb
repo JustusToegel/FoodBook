@@ -25,7 +25,9 @@
                     <h2><%= link_to cart_item.meal.name, meal_path(cart_item.meal), class: "text-decoration-none" %></h2>
 
                     <div class="meal-tags">
-                      <button>HIGH PROTEIN</button><button>VEGAN</button><button>LOW CARB</button>
+                      <% category = ["FIT FOOD", "COMFORT", "LOW CARB", "PROTEIN", "GLUTEN", "MEAL PREP", "VITAMINS"] %>
+                      <%# <button>HIGH PROTEIN</button><button>VEGAN</button><button>LOW CARB</button> %>
+                      <button><%= cart_item.meal.category.upcase %></button><button><%= category.sample %></button><button><%= category.sample %></button>
                     </div>
                     <p class="description"></b><%= raw cart_item.meal.description.slice(0, 300) %>...</p>
                   </div>
