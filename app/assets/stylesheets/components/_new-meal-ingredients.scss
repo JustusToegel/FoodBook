@@ -9,6 +9,11 @@
   align-items: center;
   justify-content: space-between;
 }
+.title-list {
+  margin-top: 50px;
+  color: darkgreen;
+  text-align: center;
+}
 
 .ingredient-card i {
   color: rgb(236, 78, 78);
@@ -33,17 +38,26 @@
 
 // button
 .add-ingredient-btn {
+  text-align: center;
+  color: white !important;
   width: 100%;
   border: none;
   padding: 10px 20px;
   border-radius: 25px;
   margin-right: 10px;
-  background-color: #2b9148a4;
-  color: #fafafa;
+  background-color: #00b640ae;
+
 }
 .add-ingredient-btn:hover {
   transform: scale(1.05);
   text-decoration: none;
   color: #fafafa;
-  background-color: #0e9033e2;
+  background-color: #1db046;
+}
+
+.your-list {
+  margin: 40px;
+}
+.title {
+  margin-bottom: 2rem;
 }

@@ -3,7 +3,7 @@
 <br>
 <br>
 <%# Form for Ingredient Search %>
-<h1>Select the ingredients for your recipe</h1>
+<h1 class="title-list">Select the ingredients for your recipe</h1>
 <div class="d-flex">
 <div class="greenbox">
   <div class="search-bar">
@@ -34,8 +34,8 @@
 </div>
 <%# end of Form with results %>
 <div class="greenbox">
-  <div class="row align-items-center py-3">
-      <h4 class="col">Your ingredients list:</h4>
+  <div class="row align-items-center py-3 your-list">
+      <h4 class="col">Your ingredients:</h4>
       <%= link_to "Done", meal_path(@meal), class: "add-ingredient-btn col-2" %>
   </div>
     <% @list.each do |item| %>

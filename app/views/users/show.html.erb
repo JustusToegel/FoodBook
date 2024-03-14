@@ -35,12 +35,13 @@
 
   <%# section 2 %>
   <div class="user-bio">
-    <h3>About me...</h3>
+    <h5>About me...</h5>
     <p><%= @user.bio %></p>
   </div>
 
   <%# section 3 meal cards %>
   <div class="meals-list">
+    <h3>Check out my recipes:</h3>
     <% @user.meals.each do |meal| %>
       <div class="meal">
 
