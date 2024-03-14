@@ -8,13 +8,8 @@
     </div>
   </div>
 </div>
-  <table>
-    <tbody>
       <% @cart.each do |cart_item| %>
-        <tr>
             <div class="meal">
-
-
               <div class="meal-img">
                   <% if cart_item.meal.photo.attached? %>
                     <%= cl_image_tag cart_item.meal.photo.key %>
@@ -32,7 +27,7 @@
                     <div class="meal-tags">
                       <button>HIGH PROTEIN</button><button>VEGAN</button><button>LOW CARB</button>
                     </div>
-                    <p class="description"><%= raw(cart_item.meal.description).slice(0, 300) %>...</p>
+                    <p class="description"></b><%= raw cart_item.meal.description.slice(0, 300) %>...</p>
                   </div>
                   <div class="cart-action">
                    <span>Servings: <%= cart_item.amount %></span>
@@ -47,9 +42,7 @@
                   </div>
                 </div>
               </div>
-
             </div>
-        </tr>
       <% end %>
     </tbody>
   </table>

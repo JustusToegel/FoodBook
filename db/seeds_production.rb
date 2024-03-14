@@ -59,7 +59,7 @@
 ########## end of Andy ######################################
 
 ############ Create all other Users with Recipes ##############
-user_url = "https://randomuser.me/api/?results=2"
+user_url = "https://randomuser.me/api/?results=5"
 user_response = Net::HTTP.get(URI(user_url))
 user_data = JSON.parse(user_response)["results"]
 
@@ -79,11 +79,11 @@ user_data.each do |user|
   3.times do
     diet = ["ketogenic", "vegetarian", "vegan", "pescetarian", "italian"].sample
     # justus
-    # api_key = "db6a8b3c79944976acd8ca04cd447035"
+    api_key = "db6a8b3c79944976acd8ca04cd447035"
     # Mago
     # api_key = "bdad344848004f829dbd01d4f293d060"
     # Mago2
-    api_key = "2d3dac26308744f7b8d10bcc305fb34d"
+    # api_key = "2d3dac26308744f7b8d10bcc305fb34d"
     uri = URI("https://api.spoonacular.com/recipes/random?number=1&include-tags=#{diet}&apiKey=#{api_key}")
     response = Net::HTTP.get(uri)
     data = JSON.parse(response)
