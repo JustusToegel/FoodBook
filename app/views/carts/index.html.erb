@@ -35,8 +35,8 @@
                     <p class="description"><%= raw(cart_item.meal.description).slice(0, 300) %>...</p>
                   </div>
                   <div class="cart-action">
-                    <span>Servings: <%= cart_item.amount %></span>
-                    <%= link_to cart_path(cart_item), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this Cart Item? 8===D" } do %>
+                   <span>Servings: <%= cart_item.amount %></span>
+                   <%= link_to cart_path(cart_item), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this Cart Item?" } do %>
                       <button class="button">
                       <span class="button__text">Delete</span>
                         <span class="button__icon">
