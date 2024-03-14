@@ -3,6 +3,7 @@
 <br>
 <br>
 <%# Form for Ingredient Search %>
+<h1>Select the ingredients for your recipe</h1>
 <div class="d-flex">
 <div class="greenbox">
   <div class="search-bar">
@@ -19,28 +20,33 @@
       </div>
     <% end %>
   </div>
-
-  <ul>
   <% @ingredients.first(15).each do |ingredient| %>
-    <li>
-    <%= simple_form_for([current_user, @meal, @meal_ingredient]) do |f| %>
-      <%= f.hidden_field :ingredient_id, value: ingredient.id %>
-      <%= f.submit ingredient.name, class: "add" %>
-    <% end %>
-    </li>
+      <div class="row division">
+        <%= simple_form_for([current_user, @meal, @meal_ingredient]) do |f| %>
+          <%= f.hidden_field :ingredient_id, value: ingredient.id %>
+          <%= f.submit ingredient.name, class: "ingredient-card" do %>
+            <%= ingredient.name %>
+          <% end %>
+        <% end %>
+        <i class="fa-solid fa-plus"></i>
+      </div>
   <% end %>
-  </ul>
 </div>
 <%# end of Form with results %>
 <div class="greenbox">
-  <ul>
+  <div class="row align-items-center py-3">
+      <h4 class="col">Your ingredients list:</h4>
+      <%= link_to "Done", meal_path(@meal), class: "add-ingredient-btn col-2" %>
+  </div>
     <% @list.each do |item| %>
-      <li><%= item.name %>
-      <%= link_to "Delete", meal_ingredient_path(@meal.meal_ingredients.where(ingredient_id: item).first), data: { turbo_method: :delete } %>
-      </li>
+      <div class="ingredient-card">
+        <div><%= item.name %></div>
+        <%= link_to meal_ingredient_path(@meal.meal_ingredients.where(ingredient_id: item).first), data: { turbo_method: :delete }, class: "" do %>
+          <i class="fa-solid fa-trash" ></i>
+        <% end %>
+      </div>
     <% end %>
   </ul>
-  <%= link_to "Done", meal_path(@meal), class: "add-recipe-btn align-self-end" %>
 
 </div>
 </div>
