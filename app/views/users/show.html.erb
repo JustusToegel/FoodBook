@@ -63,7 +63,7 @@
                 <%# <button>HIGH PROTEIN</button><button>VEGAN</button><button>LOW CARB</button> %>
                 <button><%= meal.category.upcase %></button><button><%= category.sample %></button><button><%= category.sample %></button>
               </div>
-              <p class="description"><%= raw(meal.description).slice(0, 300) %>...</p>
+              <p class="description"></b><%= raw(meal.description).slice(0, 300) %>...</p>
             </div>
             <div class="meal-action">
               <%= simple_form_for([meal, @cart_item]) do |f| %>
