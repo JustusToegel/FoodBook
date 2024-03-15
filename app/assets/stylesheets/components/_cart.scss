@@ -26,7 +26,7 @@
   border-radius: 25px;
   margin-bottom: 30px;
   background-color: #00d23c;
-  color:white;
+  color:white !important;
   text-align: center;
   width: 150px;
   height: 40px;
@@ -47,84 +47,10 @@
 }
 
 .cart-action span {
-  padding: 0 10px;
-  font-weight: bold;
+  padding: 0 30px;
+  right: 130px;
 }
 
-
-.delete-btn {
-  position: relative;
-  width: 150px;
-  height: 40px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  border: 1px solid #921b1b;
-  background-color: #921b1b;
-  overflow: hidden;
-  border-radius: 23px;
-  font-weight: lighter ;
-
-}
-.button {
-  position: relative;
-  width: 150px;
-  height: 40px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  border: 1px solid #921b1b;
-  background-color: #921b1b;
-  overflow: hidden;
-  transition: all 0.3s;
-  border-radius: 25px;
-}
-
-.button .button__text, .button .button__icon {
-  transition: all 0.3s;
-}
-
-.button .button__text {
-  transform: translateX(35px);
-  color: #fff;
-  font-weight: 600;
-}
-
-.button .button__icon {
-  position: absolute;
-  transform: translateX(109px);
-  height: 100%;
-  width: 39px;
-  background-color: #921b1b;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.button .svg {
-  width: 20px;
-}
-
-.button:hover {
-  background:#921b1b;
-}
-
-.button:hover .button__text {
-  color: transparent;
-}
-
-.button:hover .button__icon {
-  width: 148px;
-  transform: translateX(0);
-}
-
-.button:active .button__icon {
-  background-color: #921b1b;
-}
-
-.button:active {
-  border: 1px solid #921b1b;
-}
 .traslate-btn {
   width: 100%;
   border: none;
@@ -134,4 +60,22 @@
   background-color: #00D23B;
   color:white;
   text-align: center;
+}
+
+.meal-delete {
+  border: none;
+  padding: 10px 15px;
+  border-radius: 25px;
+  background-color: #e26f7b;
+  color:white !important;
+}
+
+.meal-delete:hover {
+  transform: scale(1.1);
+  background-color: #cf1c2e;
+  transition: 0,5s;
+}
+
+.cart-filler {
+  min-height: 50vh;
 }

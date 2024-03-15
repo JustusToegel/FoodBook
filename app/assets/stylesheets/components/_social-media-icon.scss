@@ -1,5 +1,12 @@
-.social-media-icon{
+.list-inline-item{
   padding-left: 0px;
   margin-bottom: 0px;
+}
+.list-inline-item:hover {
+  transform: scale(1.1);
+  transition: 0,5s;
+}
 
+.social-media-icon {
+  padding-left: 0px;
 }

@@ -118,7 +118,12 @@ input::-webkit-inner-spin-button {
   background-color: none;
   text-decoration: none;
   color:#00D23B !important;
-  //font-weight: bold;
+}
+.edit-btn:hover{
+  transform: scale(1.1);
+  color:white !important;
+  background-color: #14a03b;
+  transition: 0,5s;
 }
 
 .meal-delete-btn {
@@ -131,4 +136,10 @@ input::-webkit-inner-spin-button {
   margin-right: 10px;
   background-color: #e26f7b;
   color:white !important;
+}
+
+.meal-delete-btn:hover {
+  transform: scale(1.1);
+  background-color: #cf1c2e;
+  transition: 0,5s;
 }
