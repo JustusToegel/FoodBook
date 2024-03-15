@@ -22,10 +22,10 @@
               </div>
 
 
-              <div class="meal-content">
+              <div class="cart-content">
                 <div class="d-flex justify-content-between">
                   <div class="pt-4">
-                    <h2><%= link_to cart_item.meal.name, meal_path(cart_item.meal), class: "text-decoration-none" %></h2>
+                    <h2><%= link_to cart_item.meal.name, meal_path(cart_item.meal)%></h2>
 
                     <div class="meal-tags">
                       <% category = ["FIT FOOD", "COMFORT", "LOW CARB", "PROTEIN", "GLUTEN", "MEAL PREP", "VITAMINS"] %>
@@ -36,7 +36,7 @@
                   </div>
                   <div class="cart-action">
                    <span>Servings: <%= cart_item.amount %></span>
-                   <%= link_to cart_path(cart_item), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this Cart Item?" }, class: "meal-delete" do %>
+                   <%= link_to cart_path(cart_item), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this Cart Item?" }, class: "cart-delete" do %>
                     <i class="fa-solid fa-trash"></i>
                     <% end %>
                   </div>

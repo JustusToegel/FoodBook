@@ -6,6 +6,14 @@ body {
 
 body a {
   text-decoration: none !important;
-  color: black !important;
+  color: black;
 }
 
+.cards {
+  background-color: #fafafa;
+  padding: 50px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+
+}

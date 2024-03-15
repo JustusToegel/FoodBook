@@ -62,7 +62,7 @@
   text-align: center;
 }
 
-.meal-delete {
+.cart-delete {
   border: none;
   padding: 10px 15px;
   border-radius: 25px;
@@ -70,12 +70,23 @@
   color:white !important;
 }
 
-.meal-delete:hover {
+.cart-delete:hover {
   transform: scale(1.1);
   background-color: #cf1c2e;
+  color:white !important;
   transition: 0,5s;
 }
 
 .cart-filler {
   min-height: 50vh;
 }
+
+.cart-content a:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
+  color: #00D23B;
+}
+
+.cart-content {
+  margin-left: 50px;
+ }
